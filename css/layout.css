@@ -42,7 +42,7 @@
 /* Large at the top of the page; compact once scrolled so the sticky header stops eating the viewport. */
 .site-header { --logo-h: 112px; }
 .site-header.is-compact { --logo-h: 64px; }
-@media (min-width: 900px) { .site-header { --logo-h: 168px; } .site-header.is-compact { --logo-h: 64px; } }
+@media (min-width: 1080px) { .site-header { --logo-h: 168px; } .site-header.is-compact { --logo-h: 64px; } }
 .site-header__inner { padding-block: var(--space-3); }
 
 .site-nav__toggle {
@@ -57,14 +57,14 @@
 .site-nav__list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: var(--space-1); }
 .site-nav__list a {
   display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 var(--space-3);
-  font-size: var(--text-sm); font-weight: 500; color: var(--color-text); text-decoration: none; border-radius: var(--radius-sm);
+  font-size: var(--text-sm); font-weight: 500; color: var(--color-text); text-decoration: none; border-radius: var(--radius-sm); white-space: nowrap;
 }
 .site-nav__list a:hover { color: var(--color-link-hover); }
 .site-nav__list a[aria-current="page"] { color: var(--color-link); font-weight: 600; }
 .site-nav__list .btn { margin-left: var(--space-3); }
 .site-nav__lang { font-size: var(--text-xs) !important; font-weight: 700 !important; letter-spacing: var(--tracking-caps); border: 1px solid var(--color-border-strong); border-radius: var(--radius-pill) !important; padding: 0 var(--space-3) !important; min-height: 36px !important; }
 
-@media (max-width: 899px) {
+@media (max-width: 1079px) {
   .site-nav__toggle { display: inline-flex; }
   /* Without JS the list stays visible (stacked); with JS the toggle controls it. */
   .js .site-nav__list { display: none; }
