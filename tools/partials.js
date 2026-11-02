@@ -116,7 +116,8 @@ function stamp(rel, html) {
     if (!re.test(out)) continue;
     let block = fill(body);
     if (name === 'header' && pageId) {
-      block = block.replace(new RegExp(`(<a href="[^"]*" data-nav="${pageId}")`), '$1 aria-current="page"');
+      // Attribute order varies (the CTA has a class before href), so match any <a …data-nav="x">.
+      block = block.replace(new RegExp(`(<a\\b[^>]*\\bdata-nav="${pageId}")`), '$1 aria-current="page"');
     }
     out = out.replace(re, `$1\n${block}\n$2`);
   }
