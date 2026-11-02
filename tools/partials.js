@@ -5,7 +5,7 @@
  *
  * Why this and not a framework or client-side include: the committed HTML must be
  * complete and deployable as-is (push = deploy), crawlable without JS, and the
- * same files must work under /igen-website/ on GitHub Pages and at the root of
+ * same files must work under /iGen-Website/ on GitHub Pages and at the root of
  * igencad.com. So every page carries its own copy of the header/footer, and this
  * script is only a convenience to keep those copies identical.
  *

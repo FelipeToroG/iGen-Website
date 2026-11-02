@@ -1,7 +1,7 @@
 {
   "_comment": "Build-time settings read by tools/partials.js. Phase 2 = change baseUrl to https://igencad.com and set noindex to false. That is the whole move.",
   "siteName": "iGEN CAD CAM Designers",
-  "baseUrl": "https://GITHUB-USERNAME.github.io/igen-website",
+  "baseUrl": "https://felipetorog.github.io/iGen-Website",
   "noindex": true,
   "lang": "en"
 }

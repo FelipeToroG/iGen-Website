@@ -6,7 +6,6 @@ content lands. Never invent content to fill one.
 | # | Where | What is needed | Owner |
 |---|-------|----------------|-------|
 | 1 | mybot.html and es/mybot.html | Botpress embed snippet (two script tags, same in both) | Felipe |
-| 2 | site.config.json | GitHub username in baseUrl | Felipe |
 | 3 | Home hero visual | Real CAD/CAM screenshot (client fields blurred) | Felipe |
 | 4 | Services page | 1–2 sentence description per service; software/machines that may be named | Felipe |
 | 5 | Services gallery | Images, captions, alt text (is 4.png missing on purpose?) | Felipe |

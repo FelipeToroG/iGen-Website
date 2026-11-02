@@ -4,6 +4,10 @@ _project-docs/
 # Throwaway design previews (palette page etc.). Not part of the site.
 _preview/
 
+# Local working notes and assistant config. Never public.
+CLAUDE.md
+.claude/
+
 # Secrets and local env
 .env
 .env.*

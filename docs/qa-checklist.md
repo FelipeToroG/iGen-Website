@@ -14,10 +14,10 @@ the phase-2 launch. Tick in a copy; keep this file as the template.
 
 ## Relative paths (the GitHub Pages subpath)
 - [ ] Serve the repo under a subfolder (e.g. `python3 -m http.server` from a parent folder that
-      contains a symlink named `igen-website`) and open `/igen-website/`: every page, CSS, image
+      contains a symlink named `iGen-Website`) and open `/iGen-Website/`: every page, CSS, image
       and script loads. Then open the same from `/` to confirm root hosting also works.
-- [ ] 404 page: open `/igen-website/does-not-exist/` on the LIVE github.io URL. Styles load and
-      the "home" button goes to `/igen-website/`.
+- [ ] 404 page: open `/iGen-Website/does-not-exist/` on the LIVE github.io URL. Styles load and
+      the "home" button goes to `/iGen-Website/`.
 
 ## Links and navigation
 - [ ] Every nav and footer link resolves on the live URL (no 404s). Home anchors to

@@ -44,20 +44,20 @@ python3 -m http.server 8080
 
 The site is plain files, so deploying is pushing to `main`.
 
-1. On GitHub: **New repository** → name `igen-website`, **Public** (required for free Pages),
+1. On GitHub: **New repository** → name `iGen-Website`, **Public** (required for free Pages),
    no README/.gitignore/license (this repo already has them) → Create.
 2. Locally, once:
    ```
-   git remote add origin https://github.com/<user>/igen-website.git
+   git remote add origin https://github.com/FelipeToroG/iGen-Website.git
    git push -u origin main
    ```
 3. On GitHub: repo **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
    Branch `main`, folder `/ (root)` → Save. The `.nojekyll` file in the repo tells GitHub to
    serve the files as-is (no Jekyll processing).
 4. Wait for the green check under **Actions** (up to ~10 minutes the first time), then open
-   `https://<user>.github.io/igen-website/`.
-5. Put that URL in `site.config.json` (`baseUrl`) and run `node tools/partials.js` so
-   canonicals, Open Graph tags and the form redirect carry the real address. Commit and push.
+   `https://felipetorog.github.io/iGen-Website/`.
+5. `site.config.json` (`baseUrl`) already carries that address, so canonicals, Open Graph tags
+   and the form redirect are correct on the first deploy.
 
 Every later change: edit, run `node tools/partials.js` if a partial changed, commit, push.
 No custom domain is pointed at GitHub Pages during the assignment period.
