@@ -42,6 +42,6 @@ export function initNav() {
   onScroll();
 
   // Leaving the mobile breakpoint: reset so desktop never inherits a stale "open".
-  const mq = window.matchMedia('(min-width: 1140px)');
+  const mq = window.matchMedia('(min-width: 1200px)');
   mq.addEventListener('change', (e) => { if (e.matches) setOpen(false); });
 }
