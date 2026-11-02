@@ -77,7 +77,7 @@
   /* --- Layout --- */
   --container: 1120px;
   --container-narrow: 720px;
-  --header-h: 64px;
+  --header-h: 88px;   /* compact (scrolled) header height, used for anchor offset */
   --tap: 44px;                                /* minimum touch target */
 
   /* --- Radius --- */

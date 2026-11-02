@@ -9,6 +9,10 @@
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://GITHUB-USERNAME.github.io/igen-website/">
 <meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="iGEN CAD CAM Designers">
 <meta property="og:title" content="iGEN CAD CAM Designers — Remote CAD designers and CNC programmers for stone fabricators">
@@ -57,9 +61,14 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="" aria-label="iGEN CAD CAM Designers — home">
-      <!-- Full lockup on desktop, compact mark on small screens. The glossy artwork is the brand; nothing else on the page is glossy. -->
-      <img class="brand__full" src="img/brand/logo-full-color-112.png" width="137" height="112" alt="iGEN CAD CAM Designers" decoding="async">
-      <img class="brand__mark" src="img/brand/mark-color-88.png" width="88" height="88" alt="iGEN CAD CAM Designers" decoding="async">
+      <!-- Full lockup at every size (Felipe's call, 2026-11-02): 168 px tall on desktop, 112 px on
+           phones, shrinking to 64 px once the page is scrolled (see nav.js). Assets are 2x. -->
+      <picture>
+        <source type="image/webp" media="(min-width: 900px)" srcset="img/brand/logo-full-color-336.webp">
+        <source type="image/webp" srcset="img/brand/logo-full-color-224.webp">
+        <source media="(min-width: 900px)" srcset="img/brand/logo-full-color-336.png">
+        <img src="img/brand/logo-full-color-224.png" width="275" height="224" alt="iGEN CAD CAM Designers" decoding="async" fetchpriority="high">
+      </picture>
     </a>
     <nav class="site-nav" aria-label="Main">
       <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-list">

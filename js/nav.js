@@ -27,6 +27,20 @@ export function initNav() {
     if (!e.target.closest('.site-nav')) setOpen(false);
   });
 
+  // Compact the header after the first screenful. rAF-throttled; no layout thrash.
+  const header = document.querySelector('.site-header');
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      header.classList.toggle('is-compact', window.scrollY > 120);
+      ticking = false;
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   // Leaving the mobile breakpoint: reset so desktop never inherits a stale "open".
   const mq = window.matchMedia('(min-width: 900px)');
   mq.addEventListener('change', (e) => { if (e.matches) setOpen(false); });

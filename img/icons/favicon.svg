@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Flat iGEN mark for favicons. Derived from the logo's "iG" ring; not the logo itself. -->
+  <path d="M 47.86 24.60 A 17.5 17.5 0 1 0 47.86 39.40"
+        fill="none" stroke="#E47C10" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 36.0 39.40 H 47.86"
+        fill="none" stroke="#E47C10" stroke-width="9.0" stroke-linecap="round"/>
+  <rect x="24.5" y="29.0" width="7.0" height="14.5" rx="3.5" fill="#2C2C2C"/>
+  <circle cx="28.0" cy="23.0" r="3.3" fill="#2C2C2C"/>
+</svg>

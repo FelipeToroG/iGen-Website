@@ -38,13 +38,12 @@
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--header-h); }
 
 .brand { display: inline-flex; align-items: center; min-height: var(--tap); text-decoration: none; }
-.brand img { height: 56px; width: auto; }
-.brand__mark { display: none; }
-@media (max-width: 899px) {
-  /* Small screens: the compact mark; the full lockup's tagline is unreadable this small. */
-  .brand__full { display: none; }
-  .brand__mark { display: block; height: 44px; }
-}
+.brand img { height: var(--logo-h); width: auto; transition: height var(--dur) var(--ease-out); }
+/* Large at the top of the page; compact once scrolled so the sticky header stops eating the viewport. */
+.site-header { --logo-h: 112px; }
+.site-header.is-compact { --logo-h: 64px; }
+@media (min-width: 900px) { .site-header { --logo-h: 168px; } .site-header.is-compact { --logo-h: 64px; } }
+.site-header__inner { padding-block: var(--space-3); }
 
 .site-nav__toggle {
   display: none; align-items: center; justify-content: center;

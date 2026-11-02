@@ -8,10 +8,12 @@
 <!-- GitHub Pages serves this file for ANY missing path, at any depth, so relative
      paths here would break. The styles are inlined and the links are resolved at
      runtime from the first path segment (/igen-website/ on github.io, / on igencad.com). -->
-<link rel="stylesheet" href="/css/tokens.css" data-site-css="css/tokens.css">
-<link rel="stylesheet" href="/css/base.css" data-site-css="css/base.css">
-<link rel="stylesheet" href="/css/layout.css" data-site-css="css/layout.css">
-<link rel="stylesheet" href="/css/components.css" data-site-css="css/components.css">
+<link rel="stylesheet" href="/css/tokens.css" data-site-path="css/tokens.css">
+<link rel="stylesheet" href="/css/base.css" data-site-path="css/base.css">
+<link rel="stylesheet" href="/css/layout.css" data-site-path="css/layout.css">
+<link rel="stylesheet" href="/css/components.css" data-site-path="css/components.css">
+<link rel="icon" href="/img/icons/favicon.ico" sizes="32x32" data-site-path="img/icons/favicon.ico">
+<link rel="icon" href="/img/icons/favicon.svg" type="image/svg+xml" data-site-path="img/icons/favicon.svg">
 <style>
   /* Minimal fallback so the page reads even if the stylesheet links above miss. */
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif; color: #2C2C2C; margin: 0; }
@@ -27,7 +29,7 @@
     var seg = location.pathname.split('/')[1];
     var root = (location.hostname.endsWith('github.io') && seg) ? '/' + seg + '/' : '/';
     document.documentElement.setAttribute('data-root', root);
-    document.querySelectorAll('link[data-site-css]').forEach(function (l) { l.href = root + l.getAttribute('data-site-css'); });
+    document.querySelectorAll('link[data-site-path]').forEach(function (l) { l.href = root + l.getAttribute('data-site-path'); });
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('a[data-rel]').forEach(function (a) { a.href = root + a.getAttribute('data-rel'); });
     });

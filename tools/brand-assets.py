@@ -18,10 +18,10 @@ OUT = ROOT / "img" / "brand"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # (source file, output stem, output heights in px). Heights are 2x the CSS size so
-# the glossy artwork stays crisp on retina screens: header 56 -> 112, footer 120 -> 240.
+# the glossy artwork stays crisp on retina screens: header 168 -> 336 (desktop), 112 -> 224 (mobile); footer uses 240.
 JOBS = [
-    ("igen-logo-full-color-transparent.png", "logo-full-color", (112, 240, 480)),
-    ("igen-logo-all-gold-transparent.png",   "logo-all-gold",   (112, 240, 480)),
+    ("igen-logo-full-color-transparent.png", "logo-full-color", (224, 336, 480)),
+    ("igen-logo-all-gold-transparent.png",   "logo-all-gold",   (224, 336, 480)),
     ("igen-mark-color-transparent.png",      "mark-color",      (88, 176, 512)),
 ]
 
