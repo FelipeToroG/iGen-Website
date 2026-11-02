@@ -1,0 +1,8 @@
+# Phase 1 (github.io test site): crawling is ALLOWED on purpose so Google can see
+# the <meta name="robots" content="noindex"> on every page. Blocking here would hide
+# the noindex and let bare URLs get indexed anyway.
+# Phase 2 (igencad.com): keep Allow, add the Sitemap line below, and set
+# "noindex": false in site.config.json before re-stamping.
+User-agent: *
+Allow: /
+# Sitemap: https://igencad.com/sitemap.xml

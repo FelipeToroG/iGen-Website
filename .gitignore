@@ -1,0 +1,22 @@
+# Internal planning material, original brand files and notes. Never public.
+_project-docs/
+
+# Throwaway design previews (palette page etc.). Not part of the site.
+_preview/
+
+# Secrets and local env
+.env
+.env.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Optional dev tooling only (the site deploys without it)
+node_modules/
+npm-debug.log*
+
+# Lighthouse / report output
+reports/
