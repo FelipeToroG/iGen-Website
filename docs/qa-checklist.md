@@ -34,7 +34,7 @@ the phase-2 launch. Tick in a copy; keep this file as the template.
 - [ ] Thank-you page carries `<meta name="robots" content="noindex">`.
 
 ## mybot.html (assignment critical)
-- [ ] Botpress snippet pasted at the marked slot, Chat interface = Embedded, Element ID =
+- [ ] Botpress snippet pasted at the marked slot in BOTH `mybot.html` and `es/mybot.html`, Chat interface = Embedded, Element ID =
       `bp-embedded-webchat`, bot published.
 - [ ] On the LIVE github.io URL: the chat renders inside the panel, answers a question from the
       knowledge base, and refuses to quote a price.
@@ -52,6 +52,11 @@ the phase-2 launch. Tick in a copy; keep this file as the template.
 - [ ] Reduced motion (macOS: Accessibility > Display > Reduce motion): nothing animates and
       nothing stays invisible.
 - [ ] Zoom to 200%: no horizontal scroll, nothing overlaps.
+
+## Spanish
+- [ ] EN/ES switch on every page lands on the same page in the other language (not the home page).
+- [ ] `es/` pages show the Spanish header/footer and `<html lang="es">`; hreflang tags present.
+- [ ] Spanish contact form shows Spanish validation messages and redirects to `es/thank-you/`.
 
 ## Devices
 - [ ] Real iPhone (Safari) and real Android (Chrome): home, services, contact, mybot.

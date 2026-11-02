@@ -5,7 +5,7 @@ content lands. Never invent content to fill one.
 
 | # | Where | What is needed | Owner |
 |---|-------|----------------|-------|
-| 1 | mybot.html | Botpress embed snippet (two script tags) | Felipe |
+| 1 | mybot.html and es/mybot.html | Botpress embed snippet (two script tags, same in both) | Felipe |
 | 2 | site.config.json | GitHub username in baseUrl | Felipe |
 | 3 | Home hero visual | Real CAD/CAM screenshot (client fields blurred) | Felipe |
 | 4 | Services page | 1–2 sentence description per service; software/machines that may be named | Felipe |
@@ -15,5 +15,5 @@ content lands. Never invent content to fill one.
 | 8 | About | Team section content beyond the three founders? | Felipe |
 | 10 | Contact | Original service-area map image (iGen-map.png, full size) | Felipe |
 | 11 | Contact form | Web3Forms access key | Felipe |
-| 12 | All pages | Spanish translations (after approach is chosen) | Felipe / Claude draft |
+| 12 | es/ pages | Review of the Spanish translation drafts (terms: countertops, placas, nesting, layouts) | Felipe |
 | 13 | Privacy | Review of draft text; last-updated date; host name at phase 2 | Felipe |

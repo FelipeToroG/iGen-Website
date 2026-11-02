@@ -18,8 +18,9 @@ faq/                  FAQ
 contact/              Contact form
 privacy/              Privacy
 thank-you/            Form success (noindex)
-mybot.html            "Ask iGen" AI assistant (root file; name is fixed)
+mybot.html            "Ask Axis" AI assistant (root file; name is fixed by the assignment)
 404.html              Not found (root file; GitHub Pages serves it)
+es/                   Spanish mirror of every page above (es/index.html, es/about/index.html, es/mybot.html …)
 css/                  tokens.css, base.css, layout.css, components.css
 js/                   small ES modules
 img/                  images (img/brand/ holds the logo copies)
@@ -63,8 +64,8 @@ No custom domain is pointed at GitHub Pages during the assignment period.
 
 ## Editing shared parts
 
-`partials/head.html`, `header.html`, `footer.html` (and small ones like `form-redirect.html`)
-are stamped into every page between `<!-- partial:NAME -->` markers:
+`partials/head.html`, `header.html`, `footer.html` (and small ones like `form-redirect.html`;
+Spanish overrides in `partials/es/`) are stamped into every page between `<!-- partial:NAME -->` markers:
 
 ```
 node tools/partials.js          # rewrite pages that drifted

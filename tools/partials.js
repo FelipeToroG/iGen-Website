@@ -18,7 +18,10 @@
  *   {{description}} the page's own <meta name="description"> content
  *   {{canonical}}   baseUrl + clean path (…/about/ , …/mybot.html)
  *   {{robots}}      <meta name="robots" content="noindex"> while site.config.json noindex=true
- *   {{baseUrl}} {{siteName}} {{year}}
+ *   {{baseUrl}} {{siteName}} {{year}} {{lang}}
+ *   {{altHref}}     relative link to the same page in the other language (the switcher)
+ *   {{enUrl}} {{esUrl}} absolute URLs for hreflang; {{langPrefix}} "" or "/es"
+ * Partials in partials/<lang>/ override the default for pages whose <html lang> matches.
  * Nav links carrying data-nav="x" get aria-current="page" when <body data-page="x">.
  * Pages may force noindex regardless of config with <body data-noindex>. (thank-you, 404)
  *
@@ -34,19 +37,37 @@ const CHECK = process.argv.includes('--check');
 const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const baseUrl = config.baseUrl.replace(/\/+$/, '');
 
+// partials/<name>.html is the default; partials/<lang>/<name>.html overrides it for that language.
+const LANGS = ['en', 'es'];
 const partials = {};
-for (const f of fs.readdirSync(path.join(ROOT, 'partials'))) {
-  if (f.endsWith('.html')) partials[f.replace(/\.html$/, '')] = fs.readFileSync(path.join(ROOT, 'partials', f), 'utf8').trim();
+const loadDir = (dir, into) => {
+  for (const f of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (f.isFile() && f.name.endsWith('.html')) into[f.name.replace(/\.html$/, '')] = fs.readFileSync(path.join(dir, f.name), 'utf8').trim();
+  }
+};
+loadDir(path.join(ROOT, 'partials'), partials);
+const langPartials = {};
+for (const lang of LANGS) {
+  const dir = path.join(ROOT, 'partials', lang);
+  langPartials[lang] = {};
+  if (fs.existsSync(dir)) loadDir(dir, langPartials[lang]);
 }
 
 /** Pages = root *.html + <dir>/index.html, one level deep, skipping tooling/private dirs. */
 function findPages() {
   const skip = new Set(['node_modules', 'partials', 'tools', 'docs', 'css', 'js', 'img', 'video', '.git', '.github']);
   const pages = [];
-  for (const entry of fs.readdirSync(ROOT, { withFileTypes: true })) {
-    if (entry.name.startsWith('_') || entry.name.startsWith('.') || skip.has(entry.name)) continue;
-    if (entry.isFile() && entry.name.endsWith('.html')) pages.push(entry.name);
-    if (entry.isDirectory() && fs.existsSync(path.join(ROOT, entry.name, 'index.html'))) pages.push(`${entry.name}/index.html`);
+  const scan = (dir, prefix) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('_') || entry.name.startsWith('.') || skip.has(entry.name)) continue;
+      if (entry.isFile() && entry.name.endsWith('.html')) pages.push(prefix + entry.name);
+      if (entry.isDirectory() && fs.existsSync(path.join(dir, entry.name, 'index.html'))) pages.push(`${prefix}${entry.name}/index.html`);
+    }
+  };
+  scan(ROOT, '');
+  // Language trees mirror the root one level down (es/about/index.html <-> about/index.html).
+  for (const lang of LANGS.filter((l) => l !== config.lang)) {
+    if (fs.existsSync(path.join(ROOT, lang))) scan(path.join(ROOT, lang), `${lang}/`);
   }
   return pages.sort();
 }
@@ -58,10 +79,23 @@ function stamp(rel, html) {
   const root = '../'.repeat(depth);
   const cleanPath = rel === 'index.html' ? '/' : rel.endsWith('/index.html') ? '/' + rel.replace(/index\.html$/, '') : '/' + rel;
   const pageId = attr(html, /<body[^>]*\sdata-page="([^"]+)"/);
+  const lang = attr(html, /<html[^>]*\slang="([a-z-]+)"/) || config.lang;
+  // Path of this page inside its language tree, e.g. "about/" or "mybot.html" or "".
+  const langPrefix = lang === config.lang ? '' : `/${lang}`;
+  const inner = cleanPath.replace(new RegExp(`^${langPrefix}/`), '');
+  const urlFor = (l) => baseUrl + (l === config.lang ? '' : `/${l}`) + '/' + inner;
+  const altLang = lang === config.lang ? LANGS.find((l) => l !== config.lang) : config.lang;
+  const altHref = root + (altLang === config.lang ? '' : `${altLang}/`) + inner;
   const forceNoindex = /<body[^>]*\sdata-noindex[\s>]/.test(html);
   const noindex = config.noindex || forceNoindex;
   const vars = {
     root,
+    lang,
+    langPrefix,
+    altHref,
+    enUrl: urlFor('en'),
+    esUrl: urlFor('es'),
+    ogLocale: lang === 'es' ? 'es_US' : 'en_US',
     title: attr(html, /<title>([^<]*)<\/title>/),
     description: attr(html, /<meta\s+name="description"\s+content="([^"]*)"/),
     canonical: baseUrl + cleanPath,
@@ -73,7 +107,9 @@ function stamp(rel, html) {
   const fill = (s) => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in vars ? vars[k] : `{{${k}}}`));
 
   let out = html;
-  for (const [name, body] of Object.entries(partials)) {
+  const names = new Set([...Object.keys(partials), ...Object.keys(langPartials[lang] || {})]);
+  for (const name of names) {
+    const body = (langPartials[lang] && langPartials[lang][name]) || partials[name];
     const re = new RegExp(`(<!-- partial:${name} -->)[\\s\\S]*?(<!-- /partial:${name} -->)`, 'g');
     if (!re.test(out)) continue;
     let block = fill(body);
