@@ -65,6 +65,8 @@ function findPages() {
     }
   };
   scan(ROOT, '');
+  // es/index.html was picked up by the root scan as a directory page; the language scan owns it.
+  for (let i = pages.length - 1; i >= 0; i--) if (LANGS.some((l) => pages[i] === `${l}/index.html`)) pages.splice(i, 1);
   // Language trees mirror the root one level down (es/about/index.html <-> about/index.html).
   for (const lang of LANGS.filter((l) => l !== config.lang)) {
     if (fs.existsSync(path.join(ROOT, lang))) scan(path.join(ROOT, lang), `${lang}/`);
