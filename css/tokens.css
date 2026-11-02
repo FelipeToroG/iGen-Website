@@ -1,0 +1,133 @@
+/* ==========================================================================
+   iGEN design tokens — palette P1 "Gallery White" (chosen 2026-11-02).
+   Every color, size and motion value the site uses is declared here once.
+   Other stylesheets only ever reference these custom properties.
+
+   Contrast (WCAG 2.x, computed): text on bg 14.0, muted 6.4, link 6.3,
+   charcoal on amber button 7.0, focus ring vs white 5.1. Brand amber (#FCA42C)
+   and orange (#E47C10) fail AA as text on light backgrounds (2.0 / 2.9) and
+   are therefore only ever used for buttons with dark text, rules and icons.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Brand constants (from the logo, never used as body text on light) --- */
+  --brand-amber:  #FCA42C;
+  --brand-orange: #E47C10;
+  --brand-brown:  #883000;
+  --brand-charcoal: #2C2C2C;
+
+  /* --- Semantic colors, light set --- */
+  --color-bg:          #FFFFFF;
+  --color-surface:     #F5F5F7;   /* cards, alternating bands */
+  --color-surface-2:   #E8E8ED;   /* hairline fills, placeholders */
+  --color-text:        #2C2C2C;
+  --color-text-muted:  #5F5F63;
+  --color-link:        #9A4A00;   /* text-safe orange family */
+  --color-link-hover:  #883000;
+  --color-accent:      #FCA42C;   /* rules, icons, highlights: never small text */
+  --color-accent-strong: #E47C10;
+  --color-btn-bg:      #FCA42C;
+  --color-btn-text:    #2C2C2C;
+  --color-btn-bg-hover: #FFB24A;
+  --color-focus:       #B35300;
+  --color-border:      rgba(44, 44, 44, 0.12);
+  --color-border-strong: rgba(44, 44, 44, 0.28);
+
+  /* Inverse band (one dark section per page at most; uses the all-gold logo) */
+  --color-inverse-bg:   #141414;
+  --color-inverse-surface: #1E1E1E;
+  --color-inverse-text: #F5F5F7;
+  --color-inverse-muted: #B0B0B5;
+  --color-inverse-link: #FCA42C;
+
+  /* --- Typography: system stack only (SF Pro is not bundled, license) --- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-xs:   0.8125rem;  /* 13px */
+  --text-sm:   0.9375rem;  /* 15px */
+  --text-base: 1.0625rem;  /* 17px */
+  --text-lg:   1.25rem;    /* 20px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  clamp(1.75rem, 1.2rem + 2vw, 2.25rem);
+  --text-3xl:  clamp(2rem, 1.3rem + 3vw, 3rem);
+  --text-display: clamp(2.375rem, 1.5rem + 4.5vw, 4.25rem);
+
+  --leading-tight: 1.08;
+  --leading-snug:  1.25;
+  --leading-body:  1.55;
+  --tracking-tight: -0.022em;
+  --tracking-caps:  0.08em;
+
+  /* --- Spacing scale (4px base) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-y: clamp(4rem, 10vw, 7.5rem);   /* vertical rhythm between ideas */
+  --gutter: clamp(1rem, 4vw, 1.5rem);
+
+  /* --- Layout --- */
+  --container: 1120px;
+  --container-narrow: 720px;
+  --header-h: 64px;
+  --tap: 44px;                                /* minimum touch target */
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* --- Elevation (kept flat; one soft shadow for floating UI only) --- */
+  --shadow-soft: 0 10px 30px rgba(44, 44, 44, 0.08);
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur: 300ms;
+  --dur-slow: 650ms;
+  --reveal-distance: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   Dark token set: STUBBED, not active. Phase 1 ships light only (decision
+   2026-11-02). To enable later: add `data-theme="dark"` to <html>, or wrap
+   this block in `@media (prefers-color-scheme: dark)` and swap the header
+   logo to logo-all-gold-*.png (the charcoal lockup vanishes on dark).
+   -------------------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg:          #141414;
+  --color-surface:     #1E1E1E;
+  --color-surface-2:   #2A2A2A;
+  --color-text:        #F5F5F7;
+  --color-text-muted:  #B0B0B5;
+  --color-link:        #FCA42C;
+  --color-link-hover:  #FFC266;
+  --color-btn-bg:      #FCA42C;
+  --color-btn-text:    #141414;
+  --color-btn-bg-hover: #FFB24A;
+  --color-focus:       #FCA42C;
+  --color-border:      rgba(245, 245, 247, 0.14);
+  --color-border-strong: rgba(245, 245, 247, 0.3);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Motion off for people who asked for it. JS checks the same query before
+   animating, so nothing moves and nothing is hidden waiting for a scroll. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+    --reveal-distance: 0px;
+  }
+}

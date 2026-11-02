@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Layout: containers, sections, grids, header and footer shells.
+   ========================================================================== */
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.container--narrow { max-width: var(--container-narrow); }
+
+/* One idea per section: generous, consistent vertical rhythm. */
+.section { padding-block: var(--section-y); }
+.section--tight { padding-block: calc(var(--section-y) * 0.6); }
+.section--surface { background: var(--color-surface); }
+.section--inverse { background: var(--color-inverse-bg); color: var(--color-inverse-text); }
+.section--inverse .lead, .section--inverse .muted { color: var(--color-inverse-muted); }
+.section--inverse a { color: var(--color-inverse-link); }
+.section--inverse .eyebrow { color: var(--color-inverse-link); }
+.section-head { margin-bottom: var(--space-7); max-width: 60ch; }
+.section-head .lead { margin-top: var(--space-4); }
+
+/* Every grid starts as one column of minmax(0, 1fr). A bare `display:grid` leaves the
+   implicit column `auto`, which grows to the longest unbreakable line and overflows
+   phones. This one rule is why the site does not scroll sideways at 390px. */
+.grid, .split, .steps, .benefits, .facts, .contact-band, .bot-layout, .site-footer__grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+.grid { gap: var(--space-5); }
+@media (min-width: 640px)  { .grid--2 { grid-template-columns: repeat(2, 1fr); } .grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px)  { .grid--3 { grid-template-columns: repeat(3, 1fr); } .grid--4 { grid-template-columns: repeat(4, 1fr); } }
+
+.split { gap: var(--space-6); align-items: center; }
+@media (min-width: 900px) { .split { grid-template-columns: 1.05fr 1fr; gap: var(--space-8); } .split--reverse > :first-child { order: 2; } }
+
+/* --- Header ------------------------------------------------------------ */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--color-border);
+}
+@supports not (color-mix(in srgb, #fff 50%, transparent)) { .site-header { background: var(--color-bg); } }
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--header-h); }
+
+.brand { display: inline-flex; align-items: center; min-height: var(--tap); text-decoration: none; }
+.brand img { height: 56px; width: auto; }
+.brand__mark { display: none; }
+@media (max-width: 899px) {
+  /* Small screens: the compact mark; the full lockup's tagline is unreadable this small. */
+  .brand__full { display: none; }
+  .brand__mark { display: block; height: 44px; }
+}
+
+.site-nav__toggle {
+  display: none; align-items: center; justify-content: center;
+  width: var(--tap); height: var(--tap); border: 0; background: transparent; border-radius: var(--radius-sm);
+}
+.site-nav__toggle svg { width: 24px; height: 24px; }
+.site-nav__toggle .icon-close { display: none; }
+.site-nav__toggle[aria-expanded="true"] .icon-menu { display: none; }
+.site-nav__toggle[aria-expanded="true"] .icon-close { display: block; }
+
+.site-nav__list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: var(--space-1); }
+.site-nav__list a {
+  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 var(--space-3);
+  font-size: var(--text-sm); font-weight: 500; color: var(--color-text); text-decoration: none; border-radius: var(--radius-sm);
+}
+.site-nav__list a:hover { color: var(--color-link-hover); }
+.site-nav__list a[aria-current="page"] { color: var(--color-link); font-weight: 600; }
+.site-nav__list .btn { margin-left: var(--space-3); }
+
+@media (max-width: 899px) {
+  .site-nav__toggle { display: inline-flex; }
+  /* Without JS the list stays visible (stacked); with JS the toggle controls it. */
+  .js .site-nav__list { display: none; }
+  .js .site-nav__list.is-open { display: flex; }
+  .site-nav__list {
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--color-bg); border-bottom: 1px solid var(--color-border);
+    padding: var(--space-3) var(--gutter) var(--space-5); box-shadow: var(--shadow-soft);
+  }
+  .site-nav__list a { min-height: 48px; font-size: var(--text-base); }
+  .site-nav__list .btn { margin: var(--space-3) 0 0; justify-content: center; }
+}
+
+/* --- Footer ------------------------------------------------------------ */
+.site-footer { border-top: 1px solid var(--color-border); background: var(--color-surface); padding-block: var(--space-8) var(--space-6); font-size: var(--text-sm); color: var(--color-text-muted); }
+.site-footer__grid { gap: var(--space-6); }
+@media (min-width: 720px) { .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+.site-footer h2 { font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--color-text); margin-bottom: var(--space-3); }
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: var(--space-2); }
+.site-footer a { color: var(--color-text); text-decoration: none; }
+.site-footer a:hover { color: var(--color-link-hover); text-decoration: underline; }
+.site-footer__brand img { height: 120px; width: auto; margin-bottom: var(--space-4); }
+.site-footer__brand p { max-width: 36ch; }
+.site-footer__social { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+.site-footer__social a { display: inline-flex; align-items: center; justify-content: center; width: var(--tap); height: var(--tap); border-radius: var(--radius-pill); border: 1px solid var(--color-border-strong); }
+.site-footer__social svg { width: 20px; height: 20px; fill: currentColor; }
+.site-footer__bottom { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); justify-content: space-between; margin-top: var(--space-7); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+.site-footer__bottom ul { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.site-footer__bottom li { margin: 0; }
