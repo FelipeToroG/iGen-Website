@@ -1,6 +1,6 @@
-# iGEN CAD CAM Designers — website
+# iGen CAD CAM Designers — website
 
-Static site for iGEN CAD CAM Designers (Tampa, FL): dedicated remote CAD designers
+Static site for iGen CAD CAM Designers (Tampa, FL): dedicated remote CAD designers
 and CNC programmers for stone and countertop fabricators across the United States.
 
 Plain HTML, CSS and JavaScript. No framework, no build step: deploying means pushing
@@ -88,5 +88,5 @@ See `docs/launch-plan.md` (written in milestone 4).
 
 ---
 
-© iGEN CAD CAM Designers. All rights reserved. No license is granted to copy,
+© iGen CAD CAM Designers. All rights reserved. No license is granted to copy,
 modify or reuse the content, design or code of this site.

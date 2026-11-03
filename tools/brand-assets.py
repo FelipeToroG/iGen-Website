@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Optional dev tool. Builds the web copies of the iGEN logo from the untouched
+Optional dev tool. Builds the web copies of the iGen logo from the untouched
 originals in _project-docs/brand/ (never committed) into img/brand/ (committed).
 
 Why Python/PIL instead of sharp: it was already on the machine and the job is a

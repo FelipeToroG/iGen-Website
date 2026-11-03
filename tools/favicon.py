@@ -34,7 +34,7 @@ def pt(angle_deg):
 top_end, bottom_end = pt(-GAP), pt(GAP)
 
 SVG = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Flat iGEN mark for favicons. Derived from the logo's "iG" ring; not the logo itself. -->
+  <!-- Flat iGen mark for favicons. Derived from the logo's "iG" ring; not the logo itself. -->
   <path d="M {top_end[0]:.2f} {top_end[1]:.2f} A {R_MID} {R_MID} 0 1 0 {bottom_end[0]:.2f} {bottom_end[1]:.2f}"
         fill="none" stroke="{ORANGE}" stroke-width="{STROKE}" stroke-linecap="round"/>
   <path d="M {BAR_X0} {bottom_end[1]:.2f} H {bottom_end[0]:.2f}"

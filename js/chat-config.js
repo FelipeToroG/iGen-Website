@@ -15,7 +15,7 @@ export const chat = {
 
   // Sample questions a visitor can click. Sent to the bot once it is ready.
   sampleQuestions: [
-    'What does iGEN do?',
+    'What does iGen do?',
     'How does the first week work?',
     'Can I hire a part-time CAD technician?',
     'What are the benefits of a dedicated remote tech?',
