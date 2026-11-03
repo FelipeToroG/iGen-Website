@@ -173,7 +173,14 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
   <div class="container">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <img src="../../img/brand/logo-full-color-240.png" width="294" height="240" alt="iGen CAD CAM Designers" loading="lazy" decoding="async">
+        <!-- Same theme-aware sources as the header: all-gold lockup on dark (theme.js rewrites the
+             media attributes when the visitor overrides the device setting). -->
+        <picture>
+          <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme="dark" data-media="" srcset="../../img/brand/logo-all-gold-240.webp">
+          <source media="(prefers-color-scheme: dark)" data-theme="dark" data-media="" srcset="../../img/brand/logo-all-gold-240.png">
+          <source type="image/webp" data-theme="light" data-media="" srcset="../../img/brand/logo-full-color-240.webp">
+          <img src="../../img/brand/logo-full-color-240.png" width="294" height="240" alt="iGen CAD CAM Designers" loading="lazy" decoding="async">
+        </picture>
         <p>Diseñadores CAD y programadores CNC remotos y dedicados para fabricadores de piedra y countertops en todo Estados Unidos. Con sede en Tampa, Florida.</p>
       </div>
       <nav aria-label="Pie de página">
