@@ -46,9 +46,12 @@ MANIFEST = [
     ("Slabsmith.jpeg", "slabsmith-layout", None, ()),
     # Titan CNC toolpaths; the first 20 px are a clipped toolbar.
     ("Titan.png", "titan-toolpaths", (0, 20, 1776, 788), ()),
+    # Service-area illustration (marketing graphic supplied by Felipe, no client data).
+    ("Service area map.png", "service-area-map", None, ()),
     # Video poster frames, extracted by tools/video.sh into sample-work/posters/.
     ("posters/cnc-programming.png", "poster-cnc-programming", None, ()),
     ("posters/slab-layout-3d.png", "poster-slab-layout-3d", None, ()),
+    ("posters/cnc-drafting.png", "poster-cnc-drafting", None, ()),
 ]
 
 
