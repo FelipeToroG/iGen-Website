@@ -77,6 +77,11 @@
   }
   .site-nav__list a { min-height: 48px; font-size: var(--text-base); }
   .site-nav__list .btn { margin: var(--space-3) 0 0; justify-content: center; }
+  /* The open menu is a wrapping row: page links take the full width, the language pill and the
+     theme toggle share one line. */
+  .site-nav__list { flex-direction: row; flex-wrap: wrap; }
+  .site-nav__list > li { flex: 0 0 100%; }
+  .site-nav__list > li:has(> .site-nav__lang), .site-nav__list > li:has(> .theme-toggle) { flex: 0 0 auto; display: flex; align-items: center; margin: var(--space-2) var(--space-3) 0 0; }
 }
 
 /* --- Footer ------------------------------------------------------------ */

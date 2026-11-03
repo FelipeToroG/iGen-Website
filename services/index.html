@@ -11,7 +11,8 @@
 <link rel="alternate" hreflang="en" href="https://felipetorog.github.io/iGen-Website/services/">
 <link rel="alternate" hreflang="es" href="https://felipetorog.github.io/iGen-Website/es/services/">
 <link rel="alternate" hreflang="x-default" href="https://felipetorog.github.io/iGen-Website/services/">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" data-theme="light">
+<meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" data-theme="dark">
 <link rel="icon" href="../img/icons/favicon.ico" sizes="32x32">
 <link rel="icon" href="../img/icons/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../img/icons/apple-touch-icon.png">
@@ -32,7 +33,9 @@
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/layout.css">
 <link rel="stylesheet" href="../css/components.css">
-<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+/* Dark mode: a stored choice is applied before first paint; with no choice the CSS follows the device. */
+try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <!-- /partial:head -->
 </head>
 <body data-page="services">
@@ -44,9 +47,15 @@
       <!-- Full lockup at every size (Felipe's call, 2026-11-02): 168 px tall on desktop, 112 px on
            phones, shrinking to 64 px once the page is scrolled (see nav.js). Assets are 2x. -->
       <picture>
-        <source type="image/webp" media="(min-width: 1200px)" srcset="../img/brand/logo-full-color-336.webp">
-        <source type="image/webp" srcset="../img/brand/logo-full-color-224.webp">
-        <source media="(min-width: 1200px)" srcset="../img/brand/logo-full-color-336.png">
+        <!-- data-theme / data-media let theme.js rewrite the media queries when a visitor overrides
+             the device setting; without JS the prefers-color-scheme sources still do the right thing. -->
+        <source type="image/webp" media="(prefers-color-scheme: dark) and (min-width: 1200px)" data-theme="dark" data-media="(min-width: 1200px)" srcset="../img/brand/logo-all-gold-336.webp">
+        <source type="image/webp" media="(prefers-color-scheme: dark)" data-theme="dark" data-media="" srcset="../img/brand/logo-all-gold-224.webp">
+        <source media="(prefers-color-scheme: dark) and (min-width: 1200px)" data-theme="dark" data-media="(min-width: 1200px)" srcset="../img/brand/logo-all-gold-336.png">
+        <source media="(prefers-color-scheme: dark)" data-theme="dark" data-media="" srcset="../img/brand/logo-all-gold-224.png">
+        <source type="image/webp" media="(min-width: 1200px)" data-theme="light" data-media="(min-width: 1200px)" srcset="../img/brand/logo-full-color-336.webp">
+        <source type="image/webp" data-theme="light" data-media="" srcset="../img/brand/logo-full-color-224.webp">
+        <source media="(min-width: 1200px)" data-theme="light" data-media="(min-width: 1200px)" srcset="../img/brand/logo-full-color-336.png">
         <img src="../img/brand/logo-full-color-224.png" width="275" height="224" alt="iGen CAD CAM Designers" decoding="async" fetchpriority="high">
       </picture>
     </a>
@@ -64,6 +73,7 @@
         <li><a href="../faq/" data-nav="faq">FAQ</a></li>
         <li><a href="../mybot.html" data-nav="mybot">Ask Axis</a></li>
         <li><a class="site-nav__lang" href="../es/services/" lang="es" hreflang="es" aria-label="Versión en español">ES</a></li>
+        <li><button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" data-label-dark="Switch to dark mode" data-label-light="Switch to light mode"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></li>
         <!-- The phone number is deliberately not in the header (it is a personal line). It stays on
              Contact, the footer, the contact band and the bot fallback. -->
         <li><a class="btn btn--primary" href="../contact/" data-nav="contact">Contact us</a></li>
@@ -79,7 +89,7 @@
       <span class="eyebrow">Services</span>
       <h1>Drafting, layouts and programming for the stone countertop industry.</h1>
       <p class="lead">Your iGen technician works from your drawings, bulletins, sketches and shop drawings, inside your own software and on your own machines.</p>
-      <!-- [[PLACEHOLDER: CAD/CAM software and machine brands iGen supports (only if they appear in the website or brochure)]] -->
+      <p class="lead">Recent work includes drawings in AutoCAD, CNC programs in Alphacam for Titan CNC machines and slab layouts in Slabsmith.</p>
     </div>
   </section>
 
@@ -101,11 +111,39 @@
           <h2 style="font-size: var(--text-xl)">Shop PDFs</h2>
           <p>Detailed shop drawings and PDFs for your fabrication and installation teams, produced as part of the daily workflow and uploaded to your system.</p>
         </article>
-        <article class="card reveal" id="slab-layouts">
+        <article class="card reveal">
           <div class="rule"></div>
           <h2 style="font-size: var(--text-xl)">Efficient slab layouts &amp; nesting</h2>
           <p>Slab layouts and nesting planned for efficient use of material, drafted alongside the job drawings.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAB LAYOUTS: the key selling point per the brief, so it gets its own visual section. -->
+  <section class="section" id="slab-layouts">
+    <div class="container split" data-gallery data-close="Close" data-prev="Previous image" data-next="Next image" data-of="of" data-dialog-label="Image viewer">
+      <div class="reveal">
+        <span class="eyebrow">Slab layouts</span>
+        <h2>Every piece placed on the actual slab, before anything is cut.</h2>
+        <p class="lead">Efficient slab layouts and nesting mean placing each piece on a digital image of the actual slab. You see exactly how the pieces fit, get the most out of every slab and keep the vein movement flowing across seams.</p>
+        <ul class="benefits">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>See the fit before you cut</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Maximize the use of each slab</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Vein matching across seams</span></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/slabsmith-layout-800.jpg" data-full-webp="../img/work/slabsmith-layout-800.webp" data-full-avif="../img/work/slabsmith-layout-800.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/slabsmith-layout-800.avif">
+              <source type="image/webp" srcset="../img/work/slabsmith-layout-800.webp">
+              <img src="../img/work/slabsmith-layout-800.jpg" width="800" height="430" alt="Slabsmith layout with countertop pieces placed on a photo of the actual slab" decoding="async">
+            </picture>
+          </a>
+          <figcaption>Slab layout in Slabsmith: every piece placed on a photo of the real slab to match veins and use the material well.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -137,16 +175,72 @@
         <h2>Drawings, layouts and programs from real jobs.</h2>
         <p class="lead">Screenshots of iGen work. Client details are removed before anything is published.</p>
       </div>
-      <!-- Gallery shell. The accessible lightbox (keyboard, focus trap, Esc) is wired in milestone 3
-           once images, captions and alt text arrive. 7 known images: 1, 2, 3, 5, 6, 7, 8 (4 missing: CONFIRM). -->
-      <div class="grid grid--3 reveal">
-        <div class="placeholder placeholder--media">[[PLACEHOLDER: gallery image 1]]</div>
-        <div class="placeholder placeholder--media">[[PLACEHOLDER: gallery image 2]]</div>
-        <div class="placeholder placeholder--media">[[PLACEHOLDER: gallery image 3]]</div>
-        <div class="placeholder placeholder--media">[[PLACEHOLDER: gallery image 5]]</div>
-        <div class="placeholder placeholder--media">[[PLACEHOLDER: gallery image 6]]</div>
-        <div class="placeholder placeholder--media">[[PLACEHOLDER: gallery image 7]]</div>
+      <div class="grid grid--3 reveal" data-gallery data-close="Close" data-prev="Previous image" data-next="Next image" data-of="of" data-dialog-label="Image viewer">
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/lt55-drawing-800.jpg" data-full-webp="../img/work/lt55-drawing-800.webp" data-full-avif="../img/work/lt55-drawing-800.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/lt55-drawing-800.avif">
+              <source type="image/webp" srcset="../img/work/lt55-drawing-800.webp">
+              <img src="../img/work/lt55-drawing-800.jpg" width="800" height="339" alt="AutoCAD drawing of a kitchen countertop with dimensions, seams, edge profiles and a sink cutout" loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <figcaption>Kitchen countertop drawing in AutoCAD: dimensions, seams, edge profiles, sink and dishwasher openings.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/lt55-shop-pdf-800.jpg" data-full-webp="../img/work/lt55-shop-pdf-800.webp" data-full-avif="../img/work/lt55-shop-pdf-800.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/lt55-shop-pdf-800.avif">
+              <source type="image/webp" srcset="../img/work/lt55-shop-pdf-800.webp">
+              <img src="../img/work/lt55-shop-pdf-800.jpg" width="800" height="618" alt="Shop PDF of the same kitchen with a job information block and a customer approval section" loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <figcaption>Shop PDF from the same drawing: material, edge finish, job info and a customer approval block.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/fusion-l-shape-800.jpg" data-full-webp="../img/work/fusion-l-shape-800.webp" data-full-avif="../img/work/fusion-l-shape-800.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/fusion-l-shape-800.avif">
+              <source type="image/webp" srcset="../img/work/fusion-l-shape-800.webp">
+              <img src="../img/work/fusion-l-shape-800.jpg" width="800" height="411" alt="Alphacam screen with CNC toolpaths for an L-shaped countertop with seams" loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <figcaption>CNC program in Alphacam: finish passes and waterjet cuts for an L-shaped top with seams.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/fusion-island-800.jpg" data-full-webp="../img/work/fusion-island-800.webp" data-full-avif="../img/work/fusion-island-800.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/fusion-island-800.avif">
+              <source type="image/webp" srcset="../img/work/fusion-island-800.webp">
+              <img src="../img/work/fusion-island-800.jpg" width="800" height="406" alt="Alphacam screen with toolpaths for an island top with a sink cutout and backsplash strips" loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <figcaption>Alphacam toolpaths for an island with a sink cutout, backsplash strips and the remnant marked.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/slabsmith-layout-800.jpg" data-full-webp="../img/work/slabsmith-layout-800.webp" data-full-avif="../img/work/slabsmith-layout-800.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/slabsmith-layout-800.avif">
+              <source type="image/webp" srcset="../img/work/slabsmith-layout-800.webp">
+              <img src="../img/work/slabsmith-layout-800.jpg" width="800" height="430" alt="Slabsmith layout with countertop pieces placed on a photo of the actual slab" loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <figcaption>Slab layout in Slabsmith: every piece placed on a photo of the real slab to match veins and use the material well.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <a class="gallery__link" href="../img/work/titan-toolpaths-1600.jpg" data-full-webp="../img/work/titan-toolpaths-1600.webp" data-full-avif="../img/work/titan-toolpaths-1600.avif">
+            <picture>
+              <source type="image/avif" srcset="../img/work/titan-toolpaths-800.avif 800w, ../img/work/titan-toolpaths-1600.avif 1600w">
+              <source type="image/webp" srcset="../img/work/titan-toolpaths-800.webp 800w, ../img/work/titan-toolpaths-1600.webp 1600w">
+              <img src="../img/work/titan-toolpaths-800.jpg" width="800" height="346" alt="Toolpaths for a Titan CNC across three countertop pieces with sink and cooktop cutouts" loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <figcaption>Toolpaths for a Titan CNC: three tops with sink and cooktop cutouts, each pass listed in the operations tree.</figcaption>
+        </figure>
       </div>
+      <p class="gallery__more reveal">
+        
+        <a href="https://www.instagram.com/igen_cadcam/" rel="noopener" target="_blank" style="display:inline-flex;align-items:center;gap:.5em"><svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.2 1.4C1.3 2.7.9 3.4.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.2-.3 2.9-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.3 20.6.9 19.9.6 19.1.3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>More on Instagram</a>
+      </p>
     </div>
   </section>
 

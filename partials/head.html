@@ -5,7 +5,8 @@
 <link rel="alternate" hreflang="en" href="{{enUrl}}">
 <link rel="alternate" hreflang="es" href="{{esUrl}}">
 <link rel="alternate" hreflang="x-default" href="{{enUrl}}">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" data-theme="light">
+<meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" data-theme="dark">
 <link rel="icon" href="{{root}}img/icons/favicon.ico" sizes="32x32">
 <link rel="icon" href="{{root}}img/icons/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{{root}}img/icons/apple-touch-icon.png">
@@ -26,4 +27,6 @@
 <link rel="stylesheet" href="{{root}}css/base.css">
 <link rel="stylesheet" href="{{root}}css/layout.css">
 <link rel="stylesheet" href="{{root}}css/components.css">
-<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+/* Dark mode: a stored choice is applied before first paint; with no choice the CSS follows the device. */
+try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>

@@ -98,11 +98,36 @@
 }
 
 /* --------------------------------------------------------------------------
-   Dark token set: STUBBED, not active. Phase 1 ships light only (decision
-   2026-11-02). To enable later: add `data-theme="dark"` to <html>, or wrap
-   this block in `@media (prefers-color-scheme: dark)` and swap the header
-   logo to logo-all-gold-*.png (the charcoal lockup vanishes on dark).
+   Dark token set (active since 2026-11-02, "option 3"): follows prefers-color-scheme
+   unless the visitor picked a theme with the header toggle, which theme.js stores and
+   applies as data-theme on <html>. The values are listed twice because a media query
+   cannot be combined with an attribute selector in one block.
    -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  color-scheme: dark;
+  --color-bg:          #141414;
+  --color-surface:     #1E1E1E;
+  --color-surface-2:   #2A2A2A;
+  --color-text:        #F5F5F7;
+  --color-text-muted:  #B0B0B5;
+  --color-link:        #FCA42C;
+  --color-link-hover:  #FFC266;
+  --color-btn-bg:      #FCA42C;
+  --color-btn-text:    #141414;
+  --color-btn-bg-hover: #FFB24A;
+  --color-focus:       #FCA42C;
+  --color-border:      rgba(245, 245, 247, 0.14);
+  --color-border-strong: rgba(245, 245, 247, 0.3);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* The contact band is "inverse" on light; on dark it becomes a slightly lifted panel instead. */
+  --color-inverse-bg:    #1E1E22;
+  --color-inverse-text:  #F5F5F7;
+  --color-inverse-muted: #B0B0B5;
+  --color-inverse-link:  #FCA42C;
+  }
+}
+
 :root[data-theme="dark"] {
   color-scheme: dark;
   --color-bg:          #141414;
@@ -119,6 +144,11 @@
   --color-border:      rgba(245, 245, 247, 0.14);
   --color-border-strong: rgba(245, 245, 247, 0.3);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* The contact band is "inverse" on light; on dark it becomes a slightly lifted panel instead. */
+  --color-inverse-bg:    #1E1E22;
+  --color-inverse-text:  #F5F5F7;
+  --color-inverse-muted: #B0B0B5;
+  --color-inverse-link:  #FCA42C;
 }
 
 /* Motion off for people who asked for it. JS checks the same query before
