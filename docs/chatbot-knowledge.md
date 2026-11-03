@@ -13,7 +13,8 @@ and countertop fabricators across the United States. The company is based in Tam
 
 iGEN hires, trains and supervises the technicians. A technician is trained on the client's
 own process and assigned exclusively to that client, full-time or part-time, and is
-available during the client's working hours.
+available during the client's working hours. A client can start with one technician and
+add more as the workload grows; shops that need the capacity run several iGen technicians.
 
 The team has over 20 years of experience in CAD and CNC programming. Every team member can
 read and interpret blueprints, cabinet prints, templates and customer sketches, translate
