@@ -11,11 +11,12 @@ SRC="$ROOT/_project-docs/sample-work"
 OUT="$ROOT/video"
 mkdir -p "$OUT" "$SRC/posters"
 
-encode() { # encode <source file> <slug> <poster time in seconds> <crop w:h:x:y or "none">
+encode() { # encode <source file> <slug> <poster time in seconds> <crop w:h:x:y or "none"> [duration in seconds]
   # The crop removes the remote-desktop window bars and the Windows taskbar around the CAD/CAM
   # window: they carry a remote-access ID and nothing a visitor needs. Measured on the source.
   crop="none"; [ "$4" != "none" ] && crop="crop=$4,"
-  ffmpeg -hide_banner -loglevel error -y -i "$SRC/$1" -an \
+  dur=""; [ -n "${5:-}" ] && dur="-t $5"
+  ffmpeg -hide_banner -loglevel error -y -i "$SRC/$1" -an $dur \
     -vf "${crop#none}scale=1280:-2" -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p \
     -movflags +faststart "$OUT/$2.mp4"
   ffmpeg -hide_banner -loglevel error -y -ss "$3" -i "$OUT/$2.mp4" -frames:v 1 "$SRC/posters/$2.png"
@@ -23,4 +24,5 @@ encode() { # encode <source file> <slug> <poster time in seconds> <crop w:h:x:y 
 }
 
 encode "CNC Programming 2.mp4" cnc-programming 2 1680:880:130:92
-encode "Slabsmith3D.mov"       slab-layout-3d  1 none
+encode "Slabsmith3D.mov"       slab-layout-3d  1 none 12   # Felipe: end at the 12 s mark
+encode "CNC 3.mov"             cnc-drafting    2 none        # How it works page
