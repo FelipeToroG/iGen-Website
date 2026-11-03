@@ -182,8 +182,11 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
         <div class="card">
           <h2 style="font-size: var(--text-base)">Location</h2>
           <p>Tampa, Florida. We serve stone and countertop fabricators across the United States; technicians work remotely inside your systems.</p>
-          <!-- [[PLACEHOLDER: optimized static service-area map image (original iGen-map.png)]] -->
-          <div class="placeholder" style="margin-top: var(--space-4); aspect-ratio: 16/9">[[PLACEHOLDER: service-area map]]</div>
+          <div style="margin-top: var(--space-4)"><picture>
+            <source type="image/avif" srcset="../img/work/service-area-map-800.avif 800w, ../img/work/service-area-map-1600.avif 1600w" sizes="(min-width: 900px) 520px, 100vw">
+            <source type="image/webp" srcset="../img/work/service-area-map-800.webp 800w, ../img/work/service-area-map-1600.webp 1600w" sizes="(min-width: 900px) 520px, 100vw">
+            <img src="../img/work/service-area-map-800.jpg" width="800" height="450" alt="Illustration of the United States on a stone slab, with lines reaching every region from Tampa, Florida" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:var(--radius-md)">
+          </picture></div>
         </div>
         <div class="card">
           <h2 style="font-size: var(--text-base)">Prefer to ask first?</h2>

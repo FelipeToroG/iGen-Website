@@ -103,7 +103,6 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
           </video>
           <button class="video__control" type="button" aria-pressed="false" data-play="Reproducir" data-pause="Pausar">Reproducir</button>
         </div>
-        <p class="video__caption">Grabación de pantalla, sin sonido: piezas colocadas sobre la placa real y vista previa en 3D en Slabsmith.</p>
       </div>
     </div>
   </section>
@@ -152,7 +151,11 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
         </div>
       </div>
       <div class="reveal">
-        <div class="placeholder placeholder--media" role="img" aria-label="Espacio para el mapa del área de servicio">[[PLACEHOLDER: mapa del área de servicio]]</div>
+        <picture>
+            <source type="image/avif" srcset="../../img/work/service-area-map-800.avif 800w, ../../img/work/service-area-map-1600.avif 1600w" sizes="(min-width: 900px) 520px, 100vw">
+            <source type="image/webp" srcset="../../img/work/service-area-map-800.webp 800w, ../../img/work/service-area-map-1600.webp 1600w" sizes="(min-width: 900px) 520px, 100vw">
+            <img src="../../img/work/service-area-map-800.jpg" width="800" height="450" alt="Ilustración de Estados Unidos sobre una placa de piedra, con líneas que llegan a cada región desde Tampa, Florida" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:var(--radius-md)">
+          </picture>
       </div>
     </div>
   </section>

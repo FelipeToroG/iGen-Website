@@ -174,7 +174,11 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
         <div class="card">
           <h2 style="font-size: var(--text-base)">Ubicación</h2>
           <p>Tampa, Florida. Atendemos a fabricadores de piedra y countertops en todo Estados Unidos; los técnicos trabajan de forma remota dentro de sus sistemas.</p>
-          <div class="placeholder" style="margin-top: var(--space-4); aspect-ratio: 16/9">[[PLACEHOLDER: mapa del área de servicio]]</div>
+          <div style="margin-top: var(--space-4)"><picture>
+            <source type="image/avif" srcset="../../img/work/service-area-map-800.avif 800w, ../../img/work/service-area-map-1600.avif 1600w" sizes="(min-width: 900px) 520px, 100vw">
+            <source type="image/webp" srcset="../../img/work/service-area-map-800.webp 800w, ../../img/work/service-area-map-1600.webp 1600w" sizes="(min-width: 900px) 520px, 100vw">
+            <img src="../../img/work/service-area-map-800.jpg" width="800" height="450" alt="Ilustración de Estados Unidos sobre una placa de piedra, con líneas que llegan a cada región desde Tampa, Florida" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:var(--radius-md)">
+          </picture></div>
         </div>
         <div class="card">
           <h2 style="font-size: var(--text-base)">¿Prefiere preguntar primero?</h2>

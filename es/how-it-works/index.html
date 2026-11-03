@@ -137,7 +137,14 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
         <span class="eyebrow">Véalo en acción</span>
         <h2>Un técnico dibujando y programando un trabajo real.</h2>
       </div>
-      <div class="placeholder placeholder--media reveal">[[PLACEHOLDER: video]]</div>
+      <!-- Below the fold: nothing downloads until the block nears the viewport (video.js), then it
+           plays muted like the hero videos. No speech, so no caption track. -->
+      <div class="video reveal" data-video="lazy">
+        <video muted loop playsinline preload="none" poster="../../img/work/poster-cnc-drafting-800.jpg" width="1280" height="744" aria-label="Grabación de pantalla de un técnico dibujando y programando un trabajo de countertop en Alphacam">
+          <source src="../../video/cnc-drafting.mp4" type="video/mp4">
+        </video>
+        <button class="video__control" type="button" aria-pressed="false" data-play="Reproducir" data-pause="Pausar">Reproducir</button>
+      </div>
     </div>
   </section>
 
