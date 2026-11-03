@@ -53,6 +53,25 @@ the phase-2 launch. Tick in a copy; keep this file as the template.
       nothing stays invisible.
 - [ ] Zoom to 200%: no horizontal scroll, nothing overlaps.
 
+## Dark mode
+- [ ] With the device set to dark (macOS: System Settings > Appearance), every page switches: all-gold
+      logo in the header, readable text, amber links, visible focus rings, the contact band still reads
+      as a band, form fields and the bot panel legible.
+- [ ] The header toggle (sun/moon) flips the theme, the choice survives a reload and a visit to another
+      page, and the logo follows the manual choice (gold on dark, full colour on light).
+- [ ] Theme toggle is reachable by keyboard, has a visible focus ring and announces its state.
+- [ ] 404 page respects the theme (inline fallback styles use the tokens).
+
+## Video and gallery
+- [ ] Home and About hero videos play muted and loop; the Play/Pause button works by mouse and keyboard
+      and the label changes; no sound ever.
+- [ ] With Reduce Motion on, the videos do not autoplay; the poster shows with a Play button.
+- [ ] Gallery: click or Enter on a thumbnail opens the lightbox; Tab stays inside it; Left/Right move
+      between images; Esc and the close button close it and focus returns to the thumbnail.
+- [ ] Without JS the thumbnails open the full-size JPEG in the tab.
+- [ ] No customer names, remote-access IDs or license banners visible in any image or video frame
+      (`tools/images.py` crops, `tools/video.sh` crops).
+
 ## Spanish
 - [ ] EN/ES switch on every page lands on the same page in the other language (not the home page).
 - [ ] `es/` pages show the Spanish header/footer and `<html lang="es">`; hreflang tags present.

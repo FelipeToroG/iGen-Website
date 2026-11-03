@@ -33,10 +33,14 @@ Toro and Andres Toro.
    G-code the machines need. Programmed through remote log-in on one of the client's local
    computers.
 3. Shop PDFs: detailed shop drawings and PDFs for fabrication and installation teams.
-4. Efficient slab layouts and nesting: layouts planned for efficient use of material.
+4. Efficient slab layouts and nesting: each piece is placed on a digital image of the actual
+   slab, so the shop sees exactly how the pieces fit, gets the most out of the slab and keeps
+   the vein movement flowing across seams (vein matching).
 
-Software and machine brands supported: [[PLACEHOLDER]]. If asked, Axis should say it does
-not have that list and suggest calling.
+Software seen in iGen's published work samples: AutoCAD (drawings), Alphacam (CNC programs),
+Slabsmith (slab layouts) and programs for Titan CNC machines. The complete list of supported
+software and machines is [[PLACEHOLDER]]; if asked about something not listed above, Axis
+should say it does not have the full list and suggest calling.
 
 ## How it works: the first week (onboarding, six steps)
 
@@ -97,7 +101,9 @@ A: Yes. iGen provides full-time or part-time technicians and programmers, traine
 assigned exclusively to the client. Details on minimum hours: [[PLACEHOLDER]].
 
 Q: Which CAD/CAM software and machines do you support?
-A: [[PLACEHOLDER]]
+A: Recent iGen work includes drawings in AutoCAD, CNC programs in Alphacam for Titan CNC
+machines and slab layouts in Slabsmith. For anything else, call (813) 781-6255 and ask;
+the complete list is [[PLACEHOLDER]].
 
 Q: How do remote access and data security work?
 A: For CNC programming, iGen needs remote log-in access to one of the client's local

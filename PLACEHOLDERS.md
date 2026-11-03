@@ -6,10 +6,8 @@ content lands. Never invent content to fill one.
 | # | Where | What is needed | Owner |
 |---|-------|----------------|-------|
 | 1 | mybot.html and es/mybot.html | Botpress embed snippet (two script tags, same in both) | Felipe |
-| 3 | Home hero visual | Real CAD/CAM screenshot (client fields blurred) | Felipe |
-| 4 | Services page | 1–2 sentence description per service; software/machines that may be named | Felipe |
-| 5 | Services gallery | Images, captions, alt text (is 4.png missing on purpose?) | Felipe |
-| 6 | Home / How it works | Video location (YouTube/Vimeo URL or MP4) and captions | Felipe |
+| 4 | Services / FAQ | Full list of supported CAD/CAM software and machines (AutoCAD, Alphacam, Slabsmith and Titan CNC are already named from the work samples) | Felipe |
+| 5 | Services gallery, Home | Review of the six caption and alt-text drafts (EN and ES) written from the sample screenshots | Felipe |
 | 7 | FAQ | Answers: pricing model, part-time vs full-time, software, security/remote access, NDAs, start time, tech out sick, time zones | Felipe |
 | 8 | About | Team section content beyond the three founders? | Felipe |
 | 10 | Contact | Original service-area map image (iGen-map.png, full size) | Felipe |
