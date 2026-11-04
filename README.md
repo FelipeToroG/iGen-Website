@@ -66,7 +66,7 @@ No custom domain is pointed at GitHub Pages during the assignment period.
 
 ## Editing shared parts
 
-`partials/head.html`, `header.html`, `footer.html` (and small ones like `form-redirect.html`;
+`partials/head.html`, `header.html`, `footer.html` (and small ones like `form-hidden.html`, which holds the Web3Forms access key and redirect;
 Spanish overrides in `partials/es/`) are stamped into every page between `<!-- partial:NAME -->` markers:
 
 ```

@@ -119,17 +119,18 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
       <div>
         <!-- Standard HTML form: works without JavaScript as a plain POST to Web3Forms, which then
              redirects to our thank-you page. js/form.js adds inline validation and a fetch submit.
-             Switching providers in phase 2 = change the action + hidden fields here and js/site-config.js. -->
+             Switching providers = change the action here and the hidden fields in partials/form-hidden.html. -->
         <form class="form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <!-- Web3Forms access key: safe to expose by design; the recipient address is configured
-               in the Web3Forms dashboard and never appears in this repo. -->
-          <input type="hidden" name="access_key" value="">
           <input type="hidden" name="subject" value="New message from the iGen website">
           <input type="hidden" name="from_name" value="iGen website">
-          <!-- partial:form-redirect -->
-<!-- Web3Forms needs an absolute URL for the no-JS redirect; baseUrl comes from site.config.json. -->
+          <!-- partial:form-hidden -->
+<!-- Web3Forms settings shared by both contact forms. The access key is public by design (it only
+     routes the submission); the recipient address is set in the Web3Forms dashboard and never
+     appears in this repo. The redirect must be absolute for the no-JS path; baseUrl comes from
+     site.config.json. -->
+<input type="hidden" name="access_key" value="">
 <input type="hidden" name="redirect" value="https://felipetorog.github.io/iGen-Website/thank-you/">
-<!-- /partial:form-redirect -->
+<!-- /partial:form-hidden -->
           <!-- Honeypot: hidden from people, filled by bots. Web3Forms discards submissions where it is checked. -->
           <div class="botcheck" aria-hidden="true">
             <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">

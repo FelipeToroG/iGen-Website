@@ -1,0 +1,6 @@
+<!-- Web3Forms settings shared by both contact forms. The access key is public by design (it only
+     routes the submission); the recipient address is set in the Web3Forms dashboard and never
+     appears in this repo. The redirect must be absolute for the no-JS path; baseUrl comes from
+     site.config.json. -->
+<input type="hidden" name="access_key" value="">
+<input type="hidden" name="redirect" value="{{baseUrl}}{{langPrefix}}/thank-you/">

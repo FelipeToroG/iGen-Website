@@ -3,9 +3,9 @@
  * here we add inline, accessible validation and a fetch submit so the visitor stays
  * on the page if something fails, then redirect to the thank-you page on success.
  *
- * Provider-specific knowledge is confined to this file and js/site-config.js.
- * Web3Forms: POST JSON or FormData to the endpoint with `access_key`; the response
- * is { success: boolean, message: string }. Honeypot field name: `botcheck`.
+ * Provider-specific knowledge is confined to this file and partials/form-hidden.html (the
+ * access key and redirect). Web3Forms: POST FormData to the form's action with `access_key`;
+ * the response is { success: boolean, message: string }. Honeypot field name: `botcheck`.
  */
 import { site } from './site-config.js';
 
@@ -14,13 +14,10 @@ if (form) init(form);
 
 function init(form) {
   const status = document.getElementById('form-status');
+  // The access key lives in the HTML (partials/form-hidden.html), so the no-JS POST and this
+  // fetch path can never disagree. An empty value means the form is not connected yet.
   const keyInput = form.querySelector('input[name="access_key"]');
   const redirect = form.querySelector('input[name="redirect"]')?.value || '../thank-you/';
-
-  // Single source of truth for the key; the hidden input is filled from config so the
-  // no-JS path and the JS path can never disagree.
-  if (keyInput && site.form.accessKey) keyInput.value = site.form.accessKey;
-  if (site.form.endpoint) form.action = site.form.endpoint;
 
   // We validate ourselves so errors are announced next to each field.
   form.setAttribute('novalidate', '');
