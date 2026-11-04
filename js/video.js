@@ -9,23 +9,24 @@
  *  - Below-the-fold videos are marked data-video="lazy": nothing downloads until they are
  *    near the viewport (IntersectionObserver), then they behave like the others.
  *
- * Markup contract: <div class="video" data-video[="lazy"]><video muted loop playsinline poster
- * preload="metadata|none"><source src=… type="video/mp4"></video><button class="video__control"
+ * Markup contract: <div class="video" data-video[="lazy"]><video controls muted loop playsinline
+ * poster preload="metadata|none"><source src=… type="video/mp4"></video><button class="video__control"
  * data-play="Play" data-pause="Pause" …></button></div>. The muted attribute is required for
- * autoplay on iOS and Chrome; the pages also set it in HTML so no-JS behaves.
+ * autoplay on iOS and Chrome. `controls` is the no-JS fallback: this module removes it and the
+ * visible Play/Pause button takes over (its label is the state, so no aria-pressed).
  */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const saveData = navigator.connection && navigator.connection.saveData === true;
 
 function setLabel(button, playing) {
   button.textContent = playing ? button.dataset.pause : button.dataset.play;
-  button.setAttribute('aria-pressed', playing ? 'true' : 'false');
 }
 
 function wire(wrapper) {
   const video = wrapper.querySelector('video');
   const button = wrapper.querySelector('.video__control');
   if (!video || !button) return;
+  video.removeAttribute('controls');
 
   const wantsAutoplay = !reduceMotion.matches && !saveData;
 

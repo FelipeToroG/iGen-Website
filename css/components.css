@@ -151,8 +151,7 @@
 }
 .video__control:hover { background: rgba(20, 20, 20, 0.95); }
 .video__control:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
-.no-js .video__control { display: none; }  /* no script = native controls instead */
-.no-js .video video { pointer-events: auto; }
+.no-js .video__control { display: none; }  /* no script = the native controls stay */
 .video__caption { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted); }
 
 /* ---------- Work gallery ---------- */

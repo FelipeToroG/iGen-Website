@@ -122,10 +122,10 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
              button satisfies the "pause anything that moves > 5 s" rule; video.js skips autoplay
              for reduced-motion and data-saver visitors. -->
         <div class="video" data-video>
-          <video muted loop playsinline preload="metadata" poster="../img/work/poster-cnc-programming-800.jpg" width="1280" height="670" aria-label="Grabación de pantalla de un programa CNC y simulación sólida en Alphacam">
+          <video controls muted loop playsinline preload="metadata" poster="../img/work/poster-cnc-programming-800.jpg" width="1280" height="670" aria-label="Grabación de pantalla de un programa CNC y simulación sólida en Alphacam">
             <source src="../video/cnc-programming.mp4" type="video/mp4">
           </video>
-          <button class="video__control" type="button" aria-pressed="false" data-play="Reproducir" data-pause="Pausar">Reproducir</button>
+          <button class="video__control" type="button" data-play="Reproducir" data-pause="Pausar">Reproducir</button>
         </div>
       </div>
     </div>

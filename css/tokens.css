@@ -32,6 +32,7 @@
   --color-btn-text:    #2C2C2C;
   --color-btn-bg-hover: #FFB24A;
   --color-focus:       #B35300;
+  --color-error:       #B3261E;   /* form validation text; 5.9:1 on white */
   --color-border:      rgba(44, 44, 44, 0.12);
   --color-border-strong: rgba(44, 44, 44, 0.28);
 
@@ -123,6 +124,7 @@
   --color-btn-text:    #141414;
   --color-btn-bg-hover: #FFB24A;
   --color-focus:       #FCA42C;
+  --color-error:       #F28B82;   /* 7.9:1 on #141414 */
   --color-border:      rgba(245, 245, 247, 0.14);
   --color-border-strong: rgba(245, 245, 247, 0.3);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -147,6 +149,7 @@
   --color-btn-text:    #141414;
   --color-btn-bg-hover: #FFB24A;
   --color-focus:       #FCA42C;
+  --color-error:       #F28B82;   /* 7.9:1 on #141414 */
   --color-border:      rgba(245, 245, 247, 0.14);
   --color-border-strong: rgba(245, 245, 247, 0.3);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);

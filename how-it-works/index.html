@@ -136,10 +136,10 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
       <!-- Below the fold: nothing downloads until the block nears the viewport (video.js), then it
            plays muted like the hero videos. No speech, so no caption track. -->
       <div class="video reveal" data-video="lazy">
-        <video muted loop playsinline preload="none" poster="../img/work/poster-cnc-drafting-800.jpg" width="1280" height="744" aria-label="Screen recording of a technician drafting and programming a countertop job in Alphacam">
+        <video controls muted loop playsinline preload="none" poster="../img/work/poster-cnc-drafting-800.jpg" width="1280" height="744" aria-label="Screen recording of a technician drafting and programming a countertop job in Alphacam">
           <source src="../video/cnc-drafting.mp4" type="video/mp4">
         </video>
-        <button class="video__control" type="button" aria-pressed="false" data-play="Play" data-pause="Pause">Play</button>
+        <button class="video__control" type="button" data-play="Play" data-pause="Pause">Play</button>
       </div>
     </div>
   </section>

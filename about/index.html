@@ -94,10 +94,10 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
              button satisfies the "pause anything that moves > 5 s" rule; video.js skips autoplay
              for reduced-motion and data-saver visitors. -->
         <div class="video" data-video>
-          <video muted loop playsinline preload="metadata" poster="../img/work/poster-slab-layout-3d-800.jpg" width="1280" height="652" aria-label="Screen recording of a slab layout and 3D preview in Slabsmith">
+          <video controls muted loop playsinline preload="metadata" poster="../img/work/poster-slab-layout-3d-800.jpg" width="1280" height="652" aria-label="Screen recording of a slab layout and 3D preview in Slabsmith">
             <source src="../video/slab-layout-3d.mp4" type="video/mp4">
           </video>
-          <button class="video__control" type="button" aria-pressed="false" data-play="Play" data-pause="Pause">Play</button>
+          <button class="video__control" type="button" data-play="Play" data-pause="Pause">Play</button>
         </div>
       </div>
     </div>
