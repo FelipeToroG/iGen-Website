@@ -15,9 +15,6 @@
 .btn--primary:hover { background: var(--color-btn-bg-hover); color: var(--color-btn-text); }
 .btn--secondary { background: transparent; color: var(--color-text); border-color: var(--color-border-strong); }
 .btn--secondary:hover { border-color: var(--color-text); color: var(--color-text); }
-/* `.section--inverse a` (0,1,1) outranks `.btn--primary` (0,1,0); without this the primary
-   button is amber-on-amber until hover. */
-.section--inverse .btn--primary { color: var(--color-btn-text); }
 .section--inverse .btn--secondary { color: var(--color-inverse-text); border-color: rgba(245,245,247,.4); }
 .btn--lg { min-height: 52px; padding: 0 var(--space-6); font-size: var(--text-base); }
 .btn svg { width: 18px; height: 18px; }
