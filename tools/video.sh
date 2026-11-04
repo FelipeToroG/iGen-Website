@@ -24,5 +24,5 @@ encode() { # encode <source file> <slug> <poster time in seconds> <crop w:h:x:y 
 }
 
 encode "CNC Programming 2.mp4" cnc-programming 2 1680:880:130:92
-encode "Slabsmith3D.mov"       slab-layout-3d  1 none 12   # Felipe: end at the 12 s mark
+encode "Slabsmith3D.mov"       slab-layout-3d  1 none 12   # ends at the 12 s mark
 encode "CNC 3.mov"             cnc-drafting    2 none        # How it works page

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   iGen design tokens — palette P1 "Gallery White" (chosen 2026-11-02).
+   iGen design tokens — palette P1 "Gallery White".
    Every color, size and motion value the site uses is declared here once.
    Other stylesheets only ever reference these custom properties.
 
@@ -98,7 +98,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Dark token set (active since 2026-11-02, "option 3"): follows prefers-color-scheme
+   Dark token set: follows prefers-color-scheme
    unless the visitor picked a theme with the header toggle, which theme.js stores and
    applies as data-theme on <html>. The values are listed twice because a media query
    cannot be combined with an attribute selector in one block.
