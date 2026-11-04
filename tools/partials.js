@@ -13,7 +13,7 @@
  *   node tools/partials.js --check    exit 1 and list pages that would change (CI)
  *
  * Tokens available inside partials and inside page <head>:
- *   {{root}}        "" for root pages, "../" for folder/index.html pages
+ *   {{root}}        "./" for root pages, "../" for folder/index.html pages
  *   {{title}}       the page's own <title> text
  *   {{description}} the page's own <meta name="description"> content
  *   {{canonical}}   baseUrl + clean path (…/about/ , …/mybot.html)
@@ -78,7 +78,9 @@ function attr(html, re) { const m = html.match(re); return m ? m[1].trim() : '';
 
 function stamp(rel, html) {
   const depth = rel.split('/').length - 1;
-  const root = '../'.repeat(depth);
+  // "./" rather than "" on root pages: href="" points at the current page, so the Home link on
+  // mybot.html would loop back to mybot.html.
+  const root = depth ? '../'.repeat(depth) : './';
   const cleanPath = rel === 'index.html' ? '/' : rel.endsWith('/index.html') ? '/' + rel.replace(/index\.html$/, '') : '/' + rel;
   const pageId = attr(html, /<body[^>]*\sdata-page="([^"]+)"/);
   const lang = attr(html, /<html[^>]*\slang="([a-z-]+)"/) || config.lang;
