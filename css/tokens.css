@@ -54,6 +54,9 @@
   --text-2xl:  clamp(1.75rem, 1.2rem + 2vw, 2.25rem);
   --text-3xl:  clamp(2rem, 1.3rem + 3vw, 3rem);
   --text-display: clamp(2.375rem, 1.5rem + 4.5vw, 4.25rem);
+  /* Section labels (.eyebrow): large, sentence case, 24px on phones to 32px on desktop. Always
+     smaller than the h2 that follows (32px to 48px). */
+  --text-eyebrow: clamp(1.5rem, 1.1rem + 1.6vw, 2rem);
 
   --leading-tight: 1.08;
   --leading-snug:  1.25;
