@@ -70,23 +70,25 @@
 .site-nav__lang { font-size: var(--text-xs) !important; font-weight: 700 !important; letter-spacing: var(--tracking-caps); border: 1px solid var(--color-border-strong); border-radius: var(--radius-pill) !important; padding: 0 var(--space-3) !important; min-height: 36px !important; }
 
 @media (max-width: 1199px) {
-  .site-nav__toggle { display: inline-flex; }
-  /* Without JS the list stays visible (stacked); with JS the toggle controls it. */
+  .js .site-nav__toggle { display: inline-flex; }  /* the button only does something with JS */
+  /* Without JS the list stays in the flow as a wrapping row of links under the logo. Only when the
+     scripts run does it become a dropdown behind the toggle, so a failed main.js never hides the
+     navigation or floats it over the page. */
+  .site-nav__list { flex-wrap: wrap; justify-content: flex-end; gap: var(--space-1) var(--space-2); }
+  .site-nav__list a:not(.btn) { min-height: 48px; font-size: var(--text-base); }
   .js .site-nav__list { display: none; }
   .js .site-nav__list.is-open { display: flex; }
-  .site-nav__list {
+  .js .site-nav__list {
     position: absolute; left: 0; right: 0; top: 100%;
-    flex-direction: column; align-items: stretch; gap: 0;
+    gap: 0; justify-content: flex-start;
     background: var(--color-bg); border-bottom: 1px solid var(--color-border);
     padding: var(--space-3) var(--gutter) var(--space-5); box-shadow: var(--shadow-soft);
   }
-  .site-nav__list a:not(.btn) { min-height: 48px; font-size: var(--text-base); }
-  .site-nav__list .btn { margin: var(--space-3) 0 0; justify-content: center; }
   /* The open menu is a wrapping row: page links take the full width, the language pill and the
      theme toggle share one line. */
-  .site-nav__list { flex-direction: row; flex-wrap: wrap; }
-  .site-nav__list > li { flex: 0 0 100%; }
-  .site-nav__list > li:has(> .site-nav__lang), .site-nav__list > li:has(> .theme-toggle) { flex: 0 0 auto; display: flex; align-items: center; margin: var(--space-2) var(--space-3) 0 0; }
+  .js .site-nav__list > li { flex: 0 0 100%; }
+  .js .site-nav__list > li:has(> .site-nav__lang), .js .site-nav__list > li:has(> .theme-toggle) { flex: 0 0 auto; display: flex; align-items: center; margin: var(--space-2) var(--space-3) 0 0; }
+  .js .site-nav__list .btn { margin: var(--space-3) 0 0; justify-content: center; }
 }
 
 /* --- Footer ------------------------------------------------------------ */

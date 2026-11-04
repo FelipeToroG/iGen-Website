@@ -1,6 +1,7 @@
 /**
  * Dark mode: follows the device setting until the visitor picks one with the toggle; the pick
- * is stored and wins from then on. A tiny inline script in <head> applies the stored pick
+ * is kept in memory for this page and stored when storage allows (private mode may refuse), so
+ * the button works either way. A tiny inline script in <head> applies the stored pick
  * before first paint, so this module only has to wire the button and keep three things in
  * step with the active theme:
  *   1. data-theme on <html> (the CSS reads it),
@@ -17,15 +18,16 @@ function stored() {
   try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
 }
 
+// The visitor's pick for this page view; null = follow the device.
+let choice = ['dark', 'light'].includes(stored()) ? stored() : null;
+
 function effective() {
-  const s = stored();
-  if (s === 'dark' || s === 'light') return s;
-  return systemDark.matches ? 'dark' : 'light';
+  return choice || (systemDark.matches ? 'dark' : 'light');
 }
 
 function render() {
   const theme = effective();
-  const explicit = stored() === 'dark' || stored() === 'light';
+  const explicit = choice !== null;
   const root = document.documentElement;
 
   if (explicit) root.setAttribute('data-theme', theme);
@@ -46,20 +48,17 @@ function render() {
     source.setAttribute('media', media);
   });
 
+  // A toggle button with a fixed label ("Dark mode"); aria-pressed carries the state.
   document.querySelectorAll('.theme-toggle').forEach((button) => {
-    const dark = theme === 'dark';
-    button.setAttribute('aria-pressed', dark ? 'true' : 'false');
-    button.setAttribute('aria-label', dark ? button.dataset.labelLight : button.dataset.labelDark);
-    button.title = button.getAttribute('aria-label');
+    button.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
   });
 }
 
 export function initTheme() {
   document.querySelectorAll('.theme-toggle').forEach((button) => {
     button.addEventListener('click', () => {
-      const next = effective() === 'dark' ? 'light' : 'dark';
-      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) { /* private mode: still toggles for this page */ }
-      if (!stored()) document.documentElement.setAttribute('data-theme', next);
+      choice = effective() === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem(STORAGE_KEY, choice); } catch (e) { /* storage blocked: the pick still holds for this page */ }
       render();
     });
   });

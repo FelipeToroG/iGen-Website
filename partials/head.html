@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="{{root}}css/base.css">
 <link rel="stylesheet" href="{{root}}css/layout.css">
 <link rel="stylesheet" href="{{root}}css/components.css">
-<script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+<!-- The js class gates the mobile menu, the scroll reveal and the custom controls. It is set before
+     first paint (no layout shift) but only when the browser can run the ES modules; the footer's
+     module tag flips it back to no-js if main.js fails to load. -->
+<script>if ('noModule' in HTMLScriptElement.prototype) document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 /* Dark mode: a stored choice is applied before first paint; with no choice the CSS follows the device. */
 try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
