@@ -24,3 +24,7 @@ npm-debug.log*
 
 # Lighthouse / report output
 reports/
+
+# Working notes (QA checklist, placeholder log, chatbot knowledge file) live in _project-docs/.
+docs/
+PLACEHOLDERS.md
