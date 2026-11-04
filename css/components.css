@@ -68,6 +68,9 @@
 }
 .steps h3 { font-size: var(--text-step-title); font-weight: 600; line-height: var(--leading-snug); margin-bottom: var(--space-2); }
 .steps p { font-size: var(--text-base); color: var(--color-text-muted); }
+/* Single-column list whose first item should sit flush with a heading beside it. */
+.steps--flush { grid-template-columns: minmax(0, 1fr); }
+.steps--flush li:first-child { border-top: 0; padding-top: 0; }
 
 /* --- Rule accent (the only place amber appears as decoration) --- */
 .rule { width: 48px; height: 3px; border-radius: 2px; background: var(--color-accent); margin-bottom: var(--space-4); }

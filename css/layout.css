@@ -27,6 +27,8 @@
 
 .split { gap: var(--space-6); align-items: center; }
 @media (min-width: 900px) { .split { grid-template-columns: 1.05fr 1fr; gap: var(--space-8); } .split--reverse > :first-child { order: 2; } }
+/* A short heading column next to a long list: align both to the top instead of centring. */
+.split--top { align-items: start; }
 
 /* --- Header ------------------------------------------------------------ */
 .site-header {
