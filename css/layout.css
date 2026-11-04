@@ -41,9 +41,9 @@
 .brand { display: inline-flex; align-items: center; min-height: var(--tap); text-decoration: none; flex-shrink: 0; }
 .brand img { height: var(--logo-h); width: auto; transition: height var(--dur) var(--ease-out); }
 /* Large at the top of the page; compact once scrolled so the sticky header stops eating the viewport. */
-.site-header { --logo-h: 112px; }
-.site-header.is-compact { --logo-h: 64px; }
-@media (min-width: 1200px) { .site-header { --logo-h: 168px; } .site-header.is-compact { --logo-h: 64px; } }
+.site-header { --logo-h: 99px; }
+.site-header.is-compact { --logo-h: 56px; }
+@media (min-width: 1200px) { .site-header { --logo-h: 148px; } .site-header.is-compact { --logo-h: 56px; } }
 .site-header__inner { padding-block: var(--space-3); }
 
 .site-nav__toggle {
