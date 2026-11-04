@@ -41,7 +41,6 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 <style>
   .prose h2 { font-size: var(--text-xl); margin-top: var(--space-7); margin-bottom: var(--space-3); }
   .prose p, .prose li { max-width: 66ch; }
-  .draft-note { background: #FFF4E0; border: 1px solid var(--color-accent); border-radius: var(--radius-md); padding: var(--space-4); font-size: var(--text-sm); }
 </style>
 </head>
 <body data-page="privacy">
@@ -95,13 +94,13 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
     <div class="container container--narrow">
       <span class="eyebrow">Privacidad</span>
       <h1>Cómo este sitio maneja su información.</h1>
-      <p class="lead">En lenguaje sencillo, sin rastreo. Última actualización: [[PLACEHOLDER: fecha]].</p>
+      <p class="lead">En lenguaje sencillo, sin rastreo. <span hidden>Última actualización: [[PLACEHOLDER: fecha]].</span></p>
     </div>
   </section>
 
   <section class="section--tight prose">
     <div class="container container--narrow">
-      <p class="draft-note"><strong>Borrador para revisión.</strong> Este texto describe cómo está construido el sitio. iGen debe revisarlo (y, si lo desea, hacerlo verificar) antes de considerarlo definitivo.</p>
+      <p class="draft-note" hidden><strong>Borrador para revisión.</strong> Este texto describe cómo está construido el sitio. iGen debe revisarlo (y, si lo desea, hacerlo verificar) antes de considerarlo definitivo.</p>
 
       <h2>Qué recopilamos</h2>
       <p>Este sitio no usa analítica, rastreadores publicitarios ni cookies de marketing. No recopilamos información sobre su visita más allá de lo que reciben los servicios descritos abajo cuando usted decide usarlos.</p>
@@ -116,7 +115,7 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
       <p>Llamarnos o seguir los enlaces a Instagram o LinkedIn lo lleva a esos servicios, que tienen sus propias prácticas de privacidad.</p>
 
       <h2>Alojamiento</h2>
-      <p>El sitio se sirve como archivos estáticos desde nuestro proveedor de alojamiento, que puede registrar datos técnicos estándar (como la dirección IP y las páginas solicitadas) para operar el servicio. [[PLACEHOLDER: nombre del proveedor en la fase 2]]</p>
+      <p>El sitio se sirve como archivos estáticos desde nuestro proveedor de alojamiento, que puede registrar datos técnicos estándar (como la dirección IP y las páginas solicitadas) para operar el servicio. <span hidden>[[PLACEHOLDER: nombre del proveedor en la fase 2]]</span></p>
 
       <h2>Sus opciones</h2>
       <p>Si desea que eliminemos un mensaje que envió, llámenos al <a href="tel:+18137816255">(813) 781-6255</a> en horario de oficina.</p>

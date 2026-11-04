@@ -40,7 +40,6 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 <style>
   .prose h2 { font-size: var(--text-xl); margin-top: var(--space-7); margin-bottom: var(--space-3); }
   .prose p, .prose li { max-width: 66ch; }
-  .draft-note { background: #FFF4E0; border: 1px solid var(--color-accent); border-radius: var(--radius-md); padding: var(--space-4); font-size: var(--text-sm); }
 </style>
 </head>
 <body data-page="privacy">
@@ -93,14 +92,14 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
     <div class="container container--narrow">
       <span class="eyebrow">Privacy</span>
       <h1>How this website handles your information.</h1>
-      <p class="lead">Plain language, no tracking. Last updated: [[PLACEHOLDER: date]].</p>
+      <p class="lead">Plain language, no tracking. <span hidden>Last updated: [[PLACEHOLDER: date]].</span></p>
     </div>
   </section>
 
   <section class="section--tight prose">
     <div class="container container--narrow">
       <!-- [[PLACEHOLDER: Felipe to review this draft. It describes what the site does; it is not legal advice.]] -->
-      <p class="draft-note"><strong>Draft for review.</strong> This text describes how the site is built. iGen should review it (and, if wanted, have it checked) before it is treated as final.</p>
+      <p class="draft-note" hidden><strong>Draft for review.</strong> This text describes how the site is built. iGen should review it (and, if wanted, have it checked) before it is treated as final.</p>
 
       <h2>What we collect</h2>
       <p>This website does not use analytics, advertising trackers or marketing cookies. We do not collect information about your visit beyond what the services below receive when you choose to use them.</p>
@@ -115,7 +114,7 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
       <p>Calling us or following links to Instagram or LinkedIn takes you to those services, which have their own privacy practices.</p>
 
       <h2>Hosting</h2>
-      <p>The site is served as static files by our hosting provider, which may log standard technical details (such as IP address and the pages requested) to operate the service. [[PLACEHOLDER: name the host once phase 2 is live: GitHub Pages now; Netlify or Cloudflare later.]]</p>
+      <p>The site is served as static files by our hosting provider, which may log standard technical details (such as IP address and the pages requested) to operate the service. <span hidden>[[PLACEHOLDER: name the host once phase 2 is live: GitHub Pages now; Netlify or Cloudflare later.]]</span></p>
 
       <h2>Your choices</h2>
       <p>If you would like a message you sent to be deleted, call us at <a href="tel:+18137816255">(813) 781-6255</a> during office hours.</p>
