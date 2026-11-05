@@ -41,6 +41,9 @@
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-muted); }
 .chips li { border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 0.35em 0.9em; white-space: nowrap; }
 .chips b { color: var(--color-text); font-weight: 600; margin-left: 0.3em; }
+/* Reserve room before the quote file lands, so the headline card does not move when the chips fill in. */
+.chips b:empty { display: inline-block; min-width: 5.5em; }
+.quote-hero h1:empty::before, .headline .s:empty::before { content: "\00a0"; }
 .chips .chip--gold { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 14%, var(--color-bg)); color: var(--color-text); }
 
 .headline { background: var(--color-surface); border-radius: var(--radius-lg); padding: clamp(1.25rem, 3vw, 2rem); box-shadow: var(--shadow-soft); }

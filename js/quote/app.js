@@ -154,22 +154,25 @@ function wage() {
 /* ---------- render ---------- */
 
 let prev = {};   // last value per id, for the count-up
+let anim = {};   // running animation per id, so a new value cancels the old tween
 
 function setMoney(id, value) {
   const el = $(id);
   const from = prev[id] ?? value;
   prev[id] = value;
+  if (anim[id]) { cancelAnimationFrame(anim[id].raf); clearTimeout(anim[id].timer); delete anim[id]; }
   if (reduceMotion || from === value || Math.abs(from - value) < 1) { el.textContent = fmt(value); return; }
   const t0 = performance.now(), dur = 550;
+  const done = () => { el.textContent = fmt(value); delete anim[id]; };
   const step = (t) => {
     // Frame timestamps can precede t0 by a few ms; clamp so the value never overshoots backwards.
     const k = Math.max(0, Math.min(1, (t - t0) / dur)), e = 1 - Math.pow(1 - k, 3);
-    el.textContent = fmt(k >= 1 ? value : from + (value - from) * e);
-    if (k < 1 && prev[id] === value) requestAnimationFrame(step);
+    if (k >= 1) { done(); return; }
+    el.textContent = fmt(from + (value - from) * e);
+    anim[id].raf = requestAnimationFrame(step);
   };
-  requestAnimationFrame(step);
-  // Background tabs get no frames; make sure the final value lands anyway.
-  setTimeout(() => { if (prev[id] === value) el.textContent = fmt(value); }, dur + 60);
+  // Background tabs get no frames; the timer lands the final value anyway.
+  anim[id] = { raf: requestAnimationFrame(step), timer: setTimeout(() => { if (anim[id]) { cancelAnimationFrame(anim[id].raf); done(); } }, dur + 80) };
 }
 
 function render() {
