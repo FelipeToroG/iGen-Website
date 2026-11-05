@@ -1,0 +1,12 @@
+{
+  "name": "igen-website",
+  "private": true,
+  "description": "iGen CAD CAM Designers website. Plain HTML, CSS and JS; no build step. The scripts are optional dev tools.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "partials": "node tools/partials.js",
+    "partials:check": "node tools/partials.js --check",
+    "quote:check": "node tools/quote.js check"
+  }
+}
