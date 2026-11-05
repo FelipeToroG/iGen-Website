@@ -27,12 +27,13 @@
  *
  * Pages reference partials by name; add partials/foo.html and <!-- partial:foo --> markers.
  * Also writes sitemap.xml (skipping 404 and noindex pages) so the phase-2 flip is one setting.
- * No dependencies. Node 18+.
+ * No dependencies. Node 18+. ES module (package.json sets "type": "module").
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
 const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const baseUrl = config.baseUrl.replace(/\/+$/, '');
