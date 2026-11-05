@@ -1,0 +1,17 @@
+{
+  "id": "IG-2026-001",
+  "client": "Stoneworks",
+  "state": "TX",
+  "issued": "2026-11-04",
+  "validUntil": "2026-12-04",
+  "pricing": { "ft": { "1": 850, "2": 800, "3": 750 }, "pt": 485 },
+  "wages": {
+    "custom": 22.00,
+    "presets": [
+      { "label": "BLS Texas 25th pct.", "hourly": 28.00 },
+      { "label": "BLS Texas median", "hourly": 33.44 }
+    ],
+    "default": "custom"
+  },
+  "defaults": { "mode": "ft", "techs": 1 }
+}

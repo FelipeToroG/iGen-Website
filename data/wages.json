@@ -1,0 +1,14 @@
+{
+  "soc": "51-9162",
+  "occupation": "Computer Numerically Controlled Tool Programmers",
+  "source": "Bureau of Labor Statistics, Occupational Employment and Wage Statistics (May 2025), via O*NET OnLine local wages",
+  "updatedOn": "2026-11-04",
+  "states": {
+    "TX": {
+      "name": "Texas",
+      "p25": 28.00,
+      "median": 33.44,
+      "url": "https://www.onetonline.org/link/localwages/51-9162.00?st=TX"
+    }
+  }
+}
