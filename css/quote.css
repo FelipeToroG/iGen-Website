@@ -50,7 +50,8 @@
 .headline__compare { display: grid; gap: var(--space-4); }
 @media (min-width: 720px) { .headline__compare { grid-template-columns: 1fr 1fr; gap: var(--space-6); } }
 .headline__compare > div { display: grid; gap: var(--space-1); align-content: start; }
-.headline .k { font-size: var(--text-xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--color-text-muted); font-weight: 600; }
+/* No uppercase on these labels: they carry the brand name and "iGen" keeps its casing. */
+.headline .k { font-size: var(--text-sm); color: var(--color-text-muted); font-weight: 600; }
 .headline .v { font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: 1.05; font-variant-numeric: tabular-nums; }
 .headline .s { font-size: var(--text-sm); color: var(--color-text-muted); }
 .headline__house .v { color: var(--color-text-muted); }
@@ -99,7 +100,7 @@
 @media (min-width: 640px) { .price { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1000px) { .price { grid-template-columns: repeat(4, 1fr); } }
 .price > div { background: var(--color-bg); padding: var(--space-5); display: grid; gap: var(--space-1); align-content: start; }
-.price .k { font-size: var(--text-xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--color-text-muted); font-weight: 600; }
+.price .k { font-size: var(--text-sm); color: var(--color-text-muted); font-weight: 600; }
 .price .v { font-size: var(--text-2xl); font-weight: 700; letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums; }
 .price .s { font-size: var(--text-sm); color: var(--color-text-muted); }
 .price .igen { box-shadow: inset 4px 0 0 var(--color-accent); }
