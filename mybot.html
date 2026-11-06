@@ -40,6 +40,9 @@
 /* Dark mode: a stored choice is applied before first paint; with no choice the CSS follows the device. */
 try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <!-- /partial:head -->
+<!-- The only page that talks to a third party: warm up the two Botpress hosts chat.js will load from. -->
+<link rel="preconnect" href="https://cdn.botpress.cloud">
+<link rel="preconnect" href="https://files.bpcontent.cloud">
 <title>Ask Axis — iGen's AI assistant | iGen CAD CAM Designers</title>
 <meta name="description" content="Axis is iGen's AI assistant. Ask about remote CAD and CNC programming services, how the first week works, benefits, hours and how to get started.">
 </head>
@@ -100,7 +103,7 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 
       <!-- CHAT PANEL -->
       <div class="bot-panel">
-        <div class="bot-panel__frame">
+        <div class="bot-panel__frame" aria-busy="true">
           <!-- Botpress "Embedded" mode renders the chat window in this element.
                Its id must match the Element ID in Botpress > Webchat > Deploy Settings. -->
           <div id="bp-embedded-webchat"></div>
@@ -112,7 +115,7 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
             </div>
           </div>
 
-          <div class="bot-status" id="bot-fallback" hidden>
+          <div class="bot-status" id="bot-fallback" role="status" hidden>
             <div class="bot-status__inner">
               <h2 style="font-size: var(--text-xl)">Axis isn't available right now.</h2>
               <p class="muted">You can still reach us directly. We answer Mon–Fri, 7:00 am – 5:00 pm Eastern.</p>
@@ -227,17 +230,8 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 <script type="module" src="./js/main.js" onerror="document.documentElement.classList.replace('js', 'no-js')"></script>
 <!-- /partial:footer -->
 
-<!-- ============================================================================
-     BOTPRESS EMBED SLOT. Paste the two <script> tags from Botpress here:
-       Workspace > your bot > Webchat > Deploy Settings
-       Chat interface: Embedded   Element ID: bp-embedded-webchat   > Save > copy embed code
-     It looks like:
-       <script src="https://cdn.botpress.cloud/webchat/v3.x/inject.js"></script>
-       <script src="https://files.bpcontent.cloud/.../config.js" defer></script>
-     This is the only third-party runtime on the site and it loads on this page only.
-     ============================================================================ -->
-
-<!-- Watchdog + sample questions. Reads js/chat-config.js; never touches the snippet. -->
+<!-- Botpress loads from js/chat.js using the two script URLs in js/chat-config.js (the only
+     third-party runtime on the site, and only on the Ask Axis pages). -->
 <script type="module" src="js/chat.js"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@ mybot.html            "Ask Axis" AI assistant (root file)
 404.html              Not found (root file; GitHub Pages serves it)
 es/                   Spanish mirror of every page above (es/index.html, es/about/index.html, es/mybot.html …)
 css/                  tokens.css, base.css, layout.css, components.css
-js/                   small ES modules
+js/                   small ES modules (js/chat-config.js holds the Botpress embed URLs used by mybot.html and es/mybot.html)
 img/                  images (img/brand/ holds the logo copies)
 partials/             header/footer sources stamped into pages by tools/partials.js
 tools/                optional dev scripts
