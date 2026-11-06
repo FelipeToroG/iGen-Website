@@ -179,6 +179,18 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
     </div>
   </div>
 </footer>
+<!-- launcher -->
+<!-- Site-wide "Ask Axis" entry point. A plain link to the Ask Axis page, not the Botpress popup:
+     Botpress loads on mybot.html only, so every other page stays free of third-party script
+     (Lighthouse) and no stray open eats into the free plan's monthly conversation quota. Pages opt
+     out with data-no-launcher on their body tag: contact (already the human-contact step), mybot (already
+     there) and quote (its own sticky bar owns the bottom edge on phones); tools/partials.js strips
+     this block for them. No aria-label: the span is the accessible name at every width. -->
+<a class="axis-launcher" href="../mybot.html">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.1A8 8 0 1 1 21 12z"/></svg>
+  <span class="axis-launcher__label">Ask Axis</span>
+</a>
+<!-- /launcher -->
 <script type="module" src="../js/main.js" onerror="document.documentElement.classList.replace('js', 'no-js')"></script>
 <!-- /partial:footer -->
 </body>

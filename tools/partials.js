@@ -24,6 +24,8 @@
  * Partials in partials/<lang>/ override the default for pages whose <html lang> matches.
  * Nav links carrying data-nav="x" get aria-current="page" when <body data-page="x">.
  * Pages may force noindex regardless of config with <body data-noindex>. (thank-you, 404)
+ * Pages may drop the site-wide Ask Axis launcher with <body data-no-launcher>: the
+ *   <!-- launcher -->…<!-- /launcher --> block of the footer partial is removed for them. (contact, mybot, quote)
  *
  * Pages reference partials by name; add partials/foo.html and <!-- partial:foo --> markers.
  * Also writes sitemap.xml (skipping 404 and noindex pages) so the phase-2 flip is one setting.
@@ -118,6 +120,11 @@ function stamp(rel, html) {
     const re = new RegExp(`(<!-- partial:${name} -->)[\\s\\S]*?(<!-- /partial:${name} -->)`, 'g');
     if (!re.test(out)) continue;
     let block = fill(body);
+    // Test the <body> tag itself, not the whole page: the stamped launcher comment mentions the
+    // attribute, and matching it there would strip the block on the second run (drift forever).
+    if (name === 'footer' && /\sdata-no-launcher[\s>]/.test((html.match(/<body\b[^>]*>/) || [''])[0])) {
+      block = block.replace(/\n?<!-- launcher -->[\s\S]*?<!-- \/launcher -->\n?/, '\n');
+    }
     if (name === 'header' && pageId) {
       // Attribute order varies (the CTA has a class before href), so match any <a …data-nav="x">.
       block = block.replace(new RegExp(`(<a\\b[^>]*\\bdata-nav="${pageId}")`), '$1 aria-current="page"');
